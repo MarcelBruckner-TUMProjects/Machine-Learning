@@ -1,0 +1,104 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{../Ressources/Preamble.tex} % !!! DON'T TOUCH !!!
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newcommand{\ExerciseNumber}{01}
+
+\newcommand{\PersonOne}{Marcel Bruckner}
+\newcommand{\PersonTwo}{Julian Hohenadel}
+\newcommand{\PersonThree}{Kevin Bein}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DOKUMENT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{../Ressources/Cover.tex} % !!! DON'T TOUCH !!!
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% !!! HOMEWORK STARTS HERE !!!
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\Topic{Linear Algebra}
+%
+\Problem{1}
+Dimensions of matrices $A, B, C, D, E, F$
+%
+\begin{align}
+	A \in \Matrix{M}{N}, \qquad B &\in \Matrix{1}{M}, \qquad C \in \Matrix{N}{P}\\
+	D \in \Vector{Q}, \qquad B &\in \Matrix{N}{N}, \qquad C \in \Vector{1}
+\end{align}%
+%
+\Problem{2}
+$f(x) = \sum_{i=1}^{N}\sum_{j=1}^{N}x_ix_jM_{ij}$ using only matrix-vector multiplications.
+%
+\begin{align}
+	f(x) = x^TMx
+\end{align}
+%
+%
+\Problem{3}
+\begin{enumerate}[label=(\alph*)]
+	\item Conditions for unique solution $x$ for any choice of $b$ in $Ax=b$ 
+	\subitem $rank(A)=M,\qquad det(A) \neq 0,\qquad ker(A) = \{0\}$
+	
+	\item Unique solution $x$ for any choice of $b$ in $Ax=b$ with eigenvalues of A: $\{-5,0,1,1,3\}$
+	\subitem $det(A) = \prod_{i}\lambda_i = -5*0*1*1*3 = 0 \implies$ No unique solution
+\end{enumerate}
+%
+%
+\Problem{4}
+Properties of eigenvalues of $A$ in $BA = AB = I$
+%
+\begin{align}
+BA = AB = I \implies B = A^{-1}
+\end{align}
+A has to be invertable $\implies det(A) \neq 0 \implies \forall i: \lambda_i \neq 0$
+%
+\Problem{5}
+$A$ is PSD if and only if it has no negative eigenvalues\\
+%
+Definition of eigenvalue: $Ax = \lambda x$
+%
+\begin{align}
+	PSD &\Leftrightarrow x^TAx \geq 0\\
+	PSD &\Leftrightarrow x^TAx = x^T \lambda x = \lambda x^T x = \lambda \sum_{i} x_i^2 \geq 0\\
+	\sum_{i} x_i^2 &\geq_{always} 0 \implies \forall \lambda: \lambda \geq 0
+\end{align}
+%
+%
+\Problem{6}
+$B = A^T A$ is PSD for any $A$
+%
+\begin{align}
+	B = A^T A &\implies Bx = \lambda_B x = A^T A x = \lambda_A \lambda_A x = \lambda_A^2 x\\
+	\lambda_B = \lambda_A^2 &\implies \lambda_B \geq_{always} 0
+\end{align}
+B has to be PSD for any choice of A. \qquad \ensuremath{\square} 
+
+
+
+
+
+
+
+
+
+\Topic{Calculus}
+%
+\Topic{Probability Theory}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% !!! HOMEWORK ENDS HERE !!!
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{../Ressources/Appendix.tex} % !!! DON'T TOUCH !!!
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}

@@ -1,0 +1,74 @@
+\documentclass[11pt]{article} % Dokumentenklasse
+
+\usepackage[utf8]{inputenc} % Textkodierung: UTF-8
+\usepackage[T1]{fontenc} % Zeichensatzkodierung
+
+\usepackage[USenglish]{babel}% http://ctan.org/pkg/babel
+\usepackage{graphicx} % Grafiken
+\usepackage[absolute]{textpos} % Positionierung
+
+% Schriftart Helvetica:
+\usepackage[scaled]{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+
+\usepackage{calc} % Berechnungen
+\usepackage{tabto} % Tabulatoren
+\usepackage{parskip}
+
+\usepackage{enumitem}
+
+% Debugging:
+%\usepackage{layout} % Layout-Informationen
+%\usepackage{printlen} % Längenwerte ausgeben
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% EINSTELLUNGEN
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Seitenränder:
+\newcommand{\SeitenrandOben}{43.5mm}
+\newcommand{\SeitenrandRechts}{20mm}
+\newcommand{\SeitenrandLinks}{20mm}
+\newcommand{\SeitenrandUnten}{10mm}
+
+\newcommand{\UniversitaetLogoBreite}{19mm}
+\newcommand{\UniversitaetLogoHoehe}{1cm}
+
+\usepackage[a4paper,
+top=\SeitenrandOben,
+bottom=\SeitenrandUnten,
+inner=\SeitenrandLinks,
+outer=\SeitenrandRechts,
+foot=0cm,
+head=0cm
+]{geometry}
+
+\textblockorigin{\SeitenrandLinks}{\SeitenrandOben} % Ursprung für Positionierung
+
+\setlength{\parindent}{0pt}
+%\setlength{\baselineskip}{32pt}
+\setlength{\parskip}{\baselineskip}
+\TabPositions{4cm}
+\pagestyle{empty}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% General stuff
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\Problem}[1]{\paragraph*{Problem #1:}\qquad}
+\newcommand{\Topic}[1]{
+	\newpage
+	\section*{#1}}
+
+\newcommand{\Given}{\textbf{Given:\qquad\qquad}}
+\newcommand{\Searched}{\textbf{Searched:\qquad}}
+\newcommand{\Solution}{\textbf{Solution:\qquad}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Math stuff
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Vector}[1]{\R^{#1}}
+\newcommand{\Matrix}[2]{\R^{#1 \times #2}}
