@@ -132,11 +132,104 @@ B has to be PSD for any choice of A. \qquad \ensuremath{\square}
 \Topic{Probability Theory}
 %
 \Problem{9}
+\textit{Missing counter example}
+%
 \Problem{10}
+\[ P(A) = P(A|B) \overset{Bayes}{=} \frac{P(A,B)}{P(B)} = \frac{P(A)P(B)}{P(B)} = P(A) \]
+\[P(A|B,C) = \frac{P(A,B|C)}{P(B|C)} = \frac{P(A|C)P(B|C)}{P(B|C)} = P(A|C) \]
+%
+%
 \Problem{11}
+\[ p(a) = \int \int p(a,b,c)\,db\,dc \]
+\[ p(c|a,b) = \frac{p(a,b,c)}{p(a,b)} = \frac{p(a,b,c)}{\int p(a,b,c)\, dc} \]
+\[ p(b|c) = \frac{p(b,c)}{p(c)} = \frac{\int p(a,b,c) \, da}{\int \int p(a,b,c)\,da\,db} \]
+%
+%
 \Problem{12}
+\begin{flushleft}
+Extracting the variables from the Text:
+\end{flushleft}
+\begin{table}[h]
+\begin{tabular}{lllll}
+  $P(T) :=$ Test positive & $P(S) :=$ sick & $P(T|S) = 0.95$ & $P(\neg T|\neg S) = 0.95$ & $P(S) = \frac{1}{1000} = 0.001$ \\
+  $P(\neg T) :=$ Test negative & $P(\neg S) :=$ healthy & $P(T|\neg S) = 0.05$ & $P(\neg T|S) = 0.05$ & $P(\neg S) = 0.999$
+\end{tabular}
+\end{table}
+\begin{flushleft}
+Calculation of $P(S|T)$:
+\end{flushleft}
+\begin{align*}
+  P(S|T) &= \frac{P(T|S)P(S)}{P(T|S)P(S) + P(T|\neg S)(\neg S)} &\\
+  &= \frac{0.95 \cdot 0.00.1}{0.95 \cdot 0.001 + 0.05 \cdot 0.999} &\\
+  &\approx 0.019 &
+\end{align*}
+%
+%
 \Problem{13}
+\begin{flushleft}
+Given 
+\begin{itemize}
+  \item $\E[x-\mu] = \E[\mu] = \mu - \mu = 0$
+  \item $Var[x] = \sigma^2 = \mathbb[(x-\mu)^2]a$
+\end{itemize}
+the expected values of $f(x)$ becomes the following:
+\end{flushleft}
+\begin{align}
+  \E[f(x)] &= \E[ax + bx^2 + c] &\\
+  &= \E[ax] + \E[bx^2] + \E[c] &\\
+  &= a \E[x] + b \E[x^2] + c &\\
+  &= a\mu + b \E[(x-\mu+\mu)^2] + c &\\
+  %&= a\mu + c + b(\E[(\overset{:= \phi}{(x-\mu)} + \mu) (\overset{:= \phi}{(x-\mu)}+\mu)]) &\\
+  &= a\mu + c + b(\E[((x-\mu) + \mu) ((x-\mu)+\mu)]) &\phi := x-\mu \\
+  &= a\mu + c + b(\E[(\phi + \mu)^2]) \\
+  &= a\mu + c + b(\E[\phi^2 + 2\phi\mu +\mu^2]) &\\
+  &= a\mu + c + b(\E[\phi^2] + \E[2\phi\mu] + \E[\mu^2]) &\\
+  &= a\mu + c + b(\E[(x-\mu)^2] + 2\mu \E[x-\mu] + \E[\mu^2]) &\\
+  &= a\mu + c + b(\sigma^2 + 0 + \mu^2) &\\
+  &= a\mu + c + b\sigma^2 + b\mu^2 &
+\end{align}
+%
+%
 \Problem{14}
+\begin{itemize}
+  \item 
+    \begin{align*}
+    \E[g(x)] &= \E[Ax] &\\
+    &= A\E[x] &\\
+    &= A\mu &
+  \end{align*}
+  \item 
+    \begin{align*}
+      \E[g(x)g(x)^T] &= \E[Ax(Ax)^T] &\\
+      &= A \E[x(ax)^T] &\\
+      &= A \E[xx^TA^T] &\\
+      &= A \E[xx^T] A^T &\\
+      &= A(\Sigma + \mu\mu^T)A^T &\\
+      &= A A^T \Sigma + AA^T\mu\mu^T&
+    \end{align*}
+  \item 
+    \begin{align*}
+      \E[g(x)^Tg(x)] &= \E[(Ax)^TAx] &\\
+      &= \E[x^TA^TAx] & B := A^TA \\
+      &= \E[\sum_{i=1}^N \sum_{j=1}^N B_{i,j} x_i x_j ] & \\
+      &= \sum_{i=1}^N \sum_{j=1}^N B_{i,j} \E[x_ix_j] &\\
+      &= \sum_{i=1}^N \sum_{j=1}^N B_{i,j} (\sigma_{i,j} + \mu_i \mu_j) &\\
+      &= \sum_{i=1}^N \sum_{j=1}^N B_{i,j} \sigma_{i,j} + \sum_{i=1}^N \sum_{j=1}^N B_{i,j} \mu_i \mu_j &\\
+      &= \sum_{i=1}^N (B\Sigma)_{i,i} = \mu^T B \mu &\\
+      &= tr(A^TA\Sigma) + \mu^TA^TA\mu &
+    \end{align*}
+  \item 
+    \begin{align*}
+      Cov[g(x)] &= Cov[Ax] &\\
+      &= \E[(Ax - \E[Ax])(Ax - \E[Ax])^T] &\\
+      &= \E[(Ax - A\E[x])(Ax - A\E[x])^T] &\\
+      &= \E[A(x - A\E[x])(x - \E[x])^TA^T] &\\
+      &= A\E[(x - A\E[x])(x - \E[x])^T]A^T &\\
+      &= A \, Cov(x) A^T &
+    \end{align*}
+\end{itemize}
+%
+%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % !!! HOMEWORK ENDS HERE !!!
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
