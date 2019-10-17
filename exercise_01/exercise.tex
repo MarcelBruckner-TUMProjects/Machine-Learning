@@ -44,9 +44,9 @@ $f(x) = \sum_{i=1}^{N}\sum_{j=1}^{N}x_ix_jM_{ij}$ using only matrix-vector multi
 %
 \Problem{3}
 \begin{enumerate}[label=(\alph*)]
-	\item Conditions for unique solution $x$ for any choice of $b$ in $Ax=b$ 
+	\item Conditions for unique solution $x$ for any choice of $b$ in $Ax=b$
 	\subitem $rank(A)=M,\qquad det(A) \neq 0,\qquad ker(A) = \{0\}$
-	
+
 	\item Unique solution $x$ for any choice of $b$ in $Ax=b$ with eigenvalues of A: $\{-5,0,1,1,3\}$
 	\subitem $det(A) = \prod_{i}\lambda_i = -5*0*1*1*3 = 0 \implies$ No unique solution
 \end{enumerate}
@@ -79,7 +79,7 @@ $B = A^T A$ is PSD for any $A$
 	B = A^T A &\implies Bx = \lambda_B x = A^T A x = \lambda_A \lambda_A x = \lambda_A^2 x\\
 	\lambda_B = \lambda_A^2 &\implies \lambda_B \geq_{always} 0
 \end{align}
-B has to be PSD for any choice of A. \qquad \ensuremath{\square} 
+B has to be PSD for any choice of A. \qquad \ensuremath{\square}
 
 
 
@@ -91,8 +91,52 @@ B has to be PSD for any choice of A. \qquad \ensuremath{\square}
 
 \Topic{Calculus}
 %
+\Problem{7}
+
+\begin{enumerate}[label=(\alph*)]
+	\item Under what conditions does this optimization problem have (i) a unique solution, (ii) infinitely many solutions or (iii) no solution? Justify your answer.
+	\begin{enumerate}[label=(\roman*)]
+		\item The function got a global minimum.
+		\item The function got multiple local minima.
+		\item The function is not bounded below.
+	\end{enumerate}
+
+	\item Assume that the optimization problem has a unique solution. Write down the closed-form expression for $x^\star$ that minimizes the objective function.
+		\subitem $f^{\prime}(x)\stackrel{!}{=}0$
+\end{enumerate}
+%
+%
+\Problem{8}
+\begin{enumerate}[label=(\alph*)]
+	\item Compute the Hessian $\nabla^{2} g(x)$ of the objective function. Under what conditions does this optimization problem have an unique solution?
+		\subitem $ g(x) = \frac{1}{2}\begin{bmatrix} x_{1} & x_{2} & \hdots & x_{n}  \end{bmatrix}A\begin{bmatrix} x_{1} \\ x_{2} \\ \vdots \\ x_{n} \end{bmatrix}
+			+ b^{T}\begin{bmatrix} x_{1} \\ x_{2} \\ \vdots \\ x_{n} \end{bmatrix} + c \\
+			\implies \nabla^{2} g(x) = \begin{bmatrix} A_{11} & 0 & \hdots & 0 \\ 0 & A_{22} & \hdots & \vdots \\ \vdots & & \ddots & 0 \\ 0 & \hdots & 0 & A_{nn} \end{bmatrix}$ \\
+			\\
+			Unique solution: No entry on the principle diagonal of the Hessian can be $0$, else the determinant would be $0$.
+
+	\item Why is it necessary for a matrix \textbf{A} to be PSD for the optimization problem to be well-defined? What happens if A has a negative eigenvalue?
+		\subitem $g(x) = \frac{1}{2} x^{T}Ax + b^{T} + c\\ g(x) = \frac{1}{2} x^{T}\lambda_A  x + b^{T}c + c \\ g(x)= \frac{1}{2} \lambda_A \sum_{i}x_{i}^{2} + \sum_{i}b_{i}^{T}x_{i} + c \\$
+			Curvatures are the same in all dimensions, else a good approximation would not be possible.
+
+\item Assume that the matrix \textbf{A} is positive definite (PD). Write doen the closed-form expression for $x^\star$ that minimizes the objective function.
+	\subitem $g^{\prime}(x)\stackrel{!}{=}0 \implies \\ \frac{1}{2}x^{T}A + b^{T} = 0 \\ x^{T}A = -2b^{T} \\ x^{T} = -2b^{T}A^{-1} \\ x = (-2b^{T}A^{-1})^{T}$
+\end{enumerate}
+
+
+
+
+
+
+
 \Topic{Probability Theory}
 %
+\Problem{9}
+\Problem{10}
+\Problem{11}
+\Problem{12}
+\Problem{13}
+\Problem{14}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % !!! HOMEWORK ENDS HERE !!!
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
