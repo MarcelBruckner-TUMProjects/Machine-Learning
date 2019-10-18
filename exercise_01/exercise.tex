@@ -102,7 +102,7 @@ B has to be PSD for any choice of A. \qquad \ensuremath{\square}
 	\end{enumerate}
 
 	\item Assume that the optimization problem has a unique solution. Write down the closed-form expression for $x^\star$ that minimizes the objective function.
-		\subitem $f^{\prime}(x)\stackrel{!}{=}0$
+		\subitem $f^{\prime}(x)\stackrel{!}{=}0 \\ f^{\prime}(x) = ax + b = 0 \\ x^\star = \underset{x\in \mathbb{R}}{\operatorname{argmin}}f(x)= \frac{-b}{a}  $
 \end{enumerate}
 %
 %
@@ -111,16 +111,16 @@ B has to be PSD for any choice of A. \qquad \ensuremath{\square}
 	\item Compute the Hessian $\nabla^{2} g(x)$ of the objective function. Under what conditions does this optimization problem have an unique solution?
 		\subitem $ g(x) = \frac{1}{2}\begin{bmatrix} x_{1} & x_{2} & \hdots & x_{n}  \end{bmatrix}A\begin{bmatrix} x_{1} \\ x_{2} \\ \vdots \\ x_{n} \end{bmatrix}
 			+ b^{T}\begin{bmatrix} x_{1} \\ x_{2} \\ \vdots \\ x_{n} \end{bmatrix} + c \\
+				g(x) = \frac{1}{2} \sum_{i}x_{i}\sum_{j}A_{ij}x_{j} + \sum_{i}(b^{T})_{i}x_{i} + c \implies g^{\prime\prime}(x) = \begin{cases} A_{ij},&\text{if } i = j\\ 0 & \text{if } i \neq j\end{cases} \\
 			\implies \nabla^{2} g(x) = \begin{bmatrix} A_{11} & 0 & \hdots & 0 \\ 0 & A_{22} & \hdots & \vdots \\ \vdots & & \ddots & 0 \\ 0 & \hdots & 0 & A_{nn} \end{bmatrix}$ \\
 			\\
-			Unique solution: No entry on the principle diagonal of the Hessian can be $0$, else the determinant would be $0$.
+			Unique solution only if: $\forall i: A_{ii}\neq 0 \implies det(A) \neq 0$.
 
 	\item Why is it necessary for a matrix \textbf{A} to be PSD for the optimization problem to be well-defined? What happens if A has a negative eigenvalue?
-		\subitem $g(x) = \frac{1}{2} x^{T}Ax + b^{T} + c\\ g(x) = \frac{1}{2} x^{T}\lambda_A  x + b^{T}c + c \\ g(x)= \frac{1}{2} \lambda_A \sum_{i}x_{i}^{2} + \sum_{i}b_{i}^{T}x_{i} + c \\$
-			Curvatures are the same in all dimensions, else a good approximation would not be possible.
+		\subitem $g(x) = \frac{1}{2} x^{T}Ax + b^{T} + c\\ g(x) = \frac{1}{2} x^{T}\lambda_A  x + b^{T}x + c \\ g(x)= \frac{1}{2} \lambda_A \sum_{i}x_{i}^{2} + \sum_{i}b_{i}^{T}x_{i} + c \\ g^{\prime\prime}(x) = \lambda \implies$ curvature same in all directions $\implies$ global minimum $\implies$ convex problem \\ $\implies$ negative EV $\implies$ only sattle point
 
 \item Assume that the matrix \textbf{A} is positive definite (PD). Write doen the closed-form expression for $x^\star$ that minimizes the objective function.
-	\subitem $g^{\prime}(x)\stackrel{!}{=}0 \implies \\ \frac{1}{2}x^{T}A + b^{T} = 0 \\ x^{T}A = -2b^{T} \\ x^{T} = -2b^{T}A^{-1} \\ x = (-2b^{T}A^{-1})^{T}$
+	\subitem $x^\star = \underset{x\in \mathbb{R^{N}}}{\operatorname{argmin}} \implies (x)=g^{\prime}(x)\stackrel{!}{=}0 \\ g^{\prime}(x)= \frac{\partial }{\partial x}(\frac{1}{2} x^{T}Ax + b^{T} + c) \\ g^{\prime}(x)= \frac{1}{2}x^{T}A \frac{\partial x}{\partial x} + b^{T} \frac{\partial x}{\partial x} + c \frac{\partial 1}{\partial x} \\ g^{\prime}(x) = \frac{1}{2}x^{T}A+b^{T} + 0 \implies \\ $\begin{align*} \frac{1}{2}x^{T}A + b^{T} &= 0 \\ x^{T}A &= -2b^{T} \\ x^{T} &= -2b^{T}A^{-1} \\ x &= (-2b^{T}A^{-1})^{T} \end{align*}
 \end{enumerate}
 
 
@@ -167,7 +167,7 @@ Calculation of $P(S|T)$:
 %
 \Problem{13}
 \begin{flushleft}
-Given 
+Given
 \begin{itemize}
   \item $\E[x-\mu] = \E[\mu] = \mu - \mu = 0$
   \item $Var[x] = \sigma^2 = \mathbb[(x-\mu)^2]a$
@@ -192,13 +192,13 @@ the expected values of $f(x)$ becomes the following:
 %
 \Problem{14}
 \begin{itemize}
-  \item 
+  \item
     \begin{align*}
     \E[g(x)] &= \E[Ax] &\\
     &= A\E[x] &\\
     &= A\mu &
   \end{align*}
-  \item 
+  \item
     \begin{align*}
       \E[g(x)g(x)^T] &= \E[Ax(Ax)^T] &\\
       &= A \E[x(ax)^T] &\\
@@ -207,7 +207,7 @@ the expected values of $f(x)$ becomes the following:
       &= A(\Sigma + \mu\mu^T)A^T &\\
       &= A A^T \Sigma + AA^T\mu\mu^T&
     \end{align*}
-  \item 
+  \item
     \begin{align*}
       \E[g(x)^Tg(x)] &= \E[(Ax)^TAx] &\\
       &= \E[x^TA^TAx] & B := A^TA \\
@@ -218,7 +218,7 @@ the expected values of $f(x)$ becomes the following:
       &= \sum_{i=1}^N (B\Sigma)_{i,i} = \mu^T B \mu &\\
       &= tr(A^TA\Sigma) + \mu^TA^TA\mu &
     \end{align*}
-  \item 
+  \item
     \begin{align*}
       Cov[g(x)] &= Cov[Ax] &\\
       &= \E[(Ax - \E[Ax])(Ax - \E[Ax])^T] &\\
