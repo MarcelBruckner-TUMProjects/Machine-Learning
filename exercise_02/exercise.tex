@@ -57,7 +57,6 @@
   $d_2(D,C) \approx 2.2$ & $d_2(E,F) = 1$ & $d_2(F,E) = 1$ 
 \end{tabular}
 \end{table}
-\newpage
 %
 \begin{flushleft}
 c) The nearest neighbors are the same but for point $D$. Here, the L1-Distance is smallest for point $E$ whereas with L2-Distance, the nearest point is $C$. Both have different advantages but in a 2D setting, L2 represents the closest point better (as can be visually confirmed).
@@ -114,12 +113,30 @@ c) The nearest neighbors are the same but for point $D$. Here, the L1-Distance i
 %
 %
 \Problem{3}
-\\
-False, the feature test performed in a node is done by only evaluating one feature to split the training data. Therefore decision boundaries can only be parallel to the axis respectivly. This means that a decision tree at depth 1 can never produce a diagonal as shown in the plot. For that reason a huge depth would be needed to approximate the diagonal.
+%
+\begin{flushleft}
+False, the feature test performed in a node is done by only evaluating one feature to split the training data. Therefore decision boundaries can only be parallel to the axis respectivly. This means that a decision tree at depth 1 can never produce a diagonal as shown in the plot. For that reason a huge depth would be needed to approximate the diagonal in a zig-zag like pattern.
+\end{flushleft}
 %
 %
 \Problem{4}
 %
+\\
+\begin{table}[!h]
+\begin{tabular}{ll}
+  $i_H(t) = - \sum_{c_i \in C} \pi_{c_i} \log \pi_{c_i}$ with $\underset{x\rightarrow 0+}{\lim} x\log x = 0$ and $\pi_c = p(y=c|t)$ \\
+  $P(y=W) = \frac{4}{10}$ \\
+  $P(y=L) = \frac{6}{10}$
+\end{tabular}
+\end{table}
+\begin{flushleft}
+  a) 
+  \begin{align*}
+    i_H(y) &= - (p(y=W) \cdot \log p(y=W) + p(y=L) \cdot \log p(y=L)) \\
+    &= -(\frac{4}{10} \cdot \log \frac{4}{10} + \frac{4}{10} \cdot \log \frac{6}{10}) \\
+    &\approx 0.673012
+  \end{align*}
+\end{flushleft}
 %
 \Topic{Programming Task}
 %
