@@ -1,0 +1,96 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{../Ressources/Preamble.tex} % !!! DON'T TOUCH !!!
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newcommand{\ExerciseNumber}{03}
+
+\newcommand{\PersonOne}{Marcel Bruckner (03674122)}
+\newcommand{\PersonTwo}{Julian Hohenadel (03673879)}
+\newcommand{\PersonThree}{Kevin Bein (03707775)}
+
+\newcommand{\pd}[1]{\frac{\partial}{\partial #1}}
+\newcommand{\pds}[1]{\frac{\partial^2}{\partial #1}}
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DOKUMENT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{../Ressources/Cover.tex} % !!! DON'T TOUCH !!!
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% !!! HOMEWORK STARTS HERE !!!
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\Topic{Optimizing Likelihoods: Monotonic Transforms}
+%
+\Problem{1}
+\[ f_1(\theta) = \theta^t(1-\theta)^h \]
+\[ f_2(\theta) = \log(\theta^t(1-\theta)^h) \]
+\begin{align*}
+\pd{\theta} f_1(\theta) &= t \theta^{t-1}(1-\theta)^h + \theta^t \pd{\theta}\left((1-\theta)^h\right) \\
+&= t\theta^{t-1}(1-\theta)^h - \theta^t  h (1-\theta)^{h-1}
+& \\
+\pds{\theta} f_1(\theta) &= t \cdot \pd{\theta}\left(\theta^{t-1}(1-\theta)^h \right) - h \cdot \pd{\theta}\left(\theta^t (1-\theta)^{h-1}\right) \\
+&= t \cdot \left((t-1)\theta^{t-2}(1-\theta)^h - \theta^{t-1}h(1-\theta)^{h-1}\right) \\
+&+ h \cdot \left(t\theta^{t-1} (1-\theta)^{h-1} - \theta^t (h-1)(1-\theta)^{h-2}\right) \\
+& \\
+\pd{\theta} f_2(\theta) &= \pd{\theta}\left(\log(\theta^t) + \log((1-\theta)^h)\right) \\
+&= \pd{\theta}\left(\log(\theta^t) \right) + \pd{\theta}\left(\log((1-\theta)^h)\right) \\
+&= t \cdot \pd{\theta}\left(\theta\right) + h \cdot \pd{\theta}\left(\log(1-\theta)\right) \\
+&= \frac{t}{\theta} - \frac{h}{1-\theta} \\
+& \\
+\pds{\theta} f_2(\theta) &= \pd{\theta}\left(\frac{t}{\theta}\right) - \pd{\theta}\left(\frac{h}{1-\theta}\right) \\
+&= \frac{0\cdot \theta - t\cdot 1}{\theta^2} - \frac{0\cdot (1-\theta) - h \cdot (-1)}{(1-\theta)^2} \\
+&= -\frac{t}{\theta^2} - \frac{h}{(1-\theta)^2}
+\end{align*}
+%
+%
+\newpage
+%
+\Problem{2}
+%
+\begin{quote}
+"Monotonic functions preserver critical points"
+\end{quote}
+\begin{flushleft}
+Since $\log$ is a monotonic transformation, the function will yield the same values when plugged into $\underset{\theta}{\arg\max}$:
+\[ \argmax_\theta f(\theta) = \argmax_\theta \log f(\theta) \]
+%\begin{align*}
+%&f(x_1, \ldots, x_n | \theta) = f(x_1 | \theta) \cdot \ldots \cdot f(x_n | \theta) \\
+%\Rightarrow & \log(f(x_1, \ldots, x_n | \theta)) = \log(f(x_1)) \cdot \ldots \cdot \log(f(x_n)) = \log(f(x|\theta)) \\
+%\Rightarrow & \pd{\theta} \left( \log(f(x|\theta))\right) = \frac{\pd{\theta}{f(x)}}{f(x)}
+%\end{align*}
+Considering problem 1 and the fact that log converts exponents to factors (which also increases the numerical stabillity), computing the log-likelihood is faster and yields more compact functions which can then be maximized.
+\end{flushleft}
+%
+%
+\Topic{Properties of MLE and MAP}
+%
+%
+\Problem{3}
+%
+%
+\Problem{4}
+%
+%
+\Topic{Programming Task}
+%
+\Problem{5}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% !!! HOMEWORK ENDS HERE !!!
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{../Ressources/Appendix.tex} % !!! DON'T TOUCH !!!
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
