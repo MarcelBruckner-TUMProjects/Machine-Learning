@@ -10,6 +10,7 @@
 \newcommand{\PersonThree}{Kevin Bein (03707775)}
 
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % DOKUMENT
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -28,6 +29,40 @@
 %
 %
 \Problem{1}
+%
+\begin{flushleft}a)\end{flushleft}
+\begin{table}[!h]
+\begin{tabular}{ll}
+  L1-Norm: & $||x||_1 = \sum_{i=1}^n |x_i|$ \\
+  L1-Distance: & $d_1(x_1,x_2) = |x_1 - x_2| = \sum_{i=1}^n |x_{1,i} - x_{2,i}|$ 
+\end{tabular}
+\end{table}
+\begin{table}[!h]
+\begin{tabular}{lll}
+  $d_1(A,B) = 1.5$ & $d_1(B,A) = 1.5$ & $d_1(C,A) = 1.5$ \\
+  $d_1(D,E) = 2.5$ & $d_1(E,F) = 1$ & $d_1(F,E) = 1$
+\end{tabular}
+\end{table}
+%
+\begin{flushleft}b)\end{flushleft}
+\begin{table}[!h]
+\begin{tabular}{ll}
+  L2-Norm: & $||x||_2 = \sqrt{\sum_{i=1}^n |x_i|^2}$ \\
+  L2-Distance: & $d_2(x_1,x_2) = \sqrt{|x_1-x_2|^2} = \sqrt{\sum_{n=1}^n |x_{1,i} - x_{2,i}|^2} $
+\end{tabular}
+\end{table}
+\begin{table}[!h]
+\begin{tabular}{lll}
+  $d_2(A,B) \approx 1.12$ & $d_2(B,A) \approx 1.12$ & $d_2(C,A) \approx 1.5$ \\
+  $d_2(D,C) \approx 2.2$ & $d_2(E,F) = 1$ & $d_2(F,E) = 1$ 
+\end{tabular}
+\end{table}
+\newpage
+%
+\begin{flushleft}
+c) The nearest neighbors are the same but for point $D$. Here, the L1-Distance is smallest for point $E$ whereas with L2-Distance, the nearest point is $C$. Both have different advantages but in a 2D setting, L2 represents the closest point better (as can be visually confirmed).
+\end{flushleft}
+
 % Point A-F			Point A-F		a)	b)
 % [[array([1., 1.]) array([1., 1.]) 0.0 0.0]
 % [array([1., 1.]) array([2. , 0.5]) 1.5 1.118033988749895]
@@ -70,6 +105,13 @@
 %
 \Problem{2}
 %
+\begin{flushleft}
+  a) $x_new$ will be always be classified as as $C$ because when we set $k$ to be equal to the number of all points, the class with most points will win. In this case, it is $C$ with $64 > 32 > 16$.
+\end{flushleft}
+\begin{flushleft}
+  b) It is not possible to make a clear statement here since the classification is based on the weights and these are unknown. Any class is possible depending on the kernel chosen.
+\end{flushleft}
+%
 %
 \Problem{3}
 \\
@@ -82,9 +124,10 @@ False, the feature test performed in a node is done by only evaluating one featu
 \Topic{Programming Task}
 %
 %
-\Problem{5}
-\textit{Add notebook html here}
-
+\Problem{5} See below
+%
+\includepdf[pages=-]{exercise_02_notebook.pdf}
+%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % !!! HOMEWORK ENDS HERE !!!
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
