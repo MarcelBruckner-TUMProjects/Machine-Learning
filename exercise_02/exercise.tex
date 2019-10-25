@@ -137,6 +137,48 @@ False, the feature test performed in a node is done by only evaluating one featu
     &\approx 0.673012
   \end{align*}
 \end{flushleft}
+\begin{flushleft}
+  b) \\
+  \begin{flushleft}
+  Split on $x_1$:
+  \begin{table}[!h]
+  \begin{tabular}{ll}
+    $p(y=W|x_1 = T) = \frac{2}{5}$ \\
+    $p(y=W|x_1 = I) = \frac{2}{5}$ \\
+    $i_H(x_1=T) = i_H(x_1 = I) = \frac{2}{5} \cdot \log \frac{2}{5} + \frac{3}{5} \cdot \log \frac{3}{5} \approx 0.673$ \\
+    $\Delta_{x_1} = 1 - \frac{5}{10} \cdot 0.673 - \frac{5}{10} \cdot 0.673 \approx 0.327$
+  \end{tabular}
+  \end{table}
+  \end{flushleft}
+  \begin{flushleft}
+  Split on $x_2$:
+  \begin{table}[!h]
+  \begin{tabular}{ll}
+    $p(y=W|x_2 = M) = \frac{2}{4}$ \\
+    $p(y=W|x_2 = P) = \frac{2}{6}$ \\
+    $i_H(x_2 = M) = \frac{2}{4} \cdot \log \frac{2}{4} + \frac{2}{4} \cdot \log \frac{2}{4} \approx 0.693$ \\
+    $i_H(x_2 = P) = \frac{2}{6} \cdot \log \frac{2}{6} + \frac{4}{6} \cdot \log \frac{4}{6} \approx 0.637$ \\
+    $\Delta_{x_2} = 1 - \frac{4}{10} \cdot 0.693 - \frac{6}{10} \cdot 0.637 \approx 0.340$
+  \end{tabular}
+  \end{table}
+  \end{flushleft}
+  \newpage
+  \begin{flushleft}
+  Split on $x_3$:
+  \begin{table}[!h]
+  \begin{tabular}{ll}
+    $p(y=W|x_3 = S) = \frac{3}{5}$ \\
+    $p(y=W|x_3 = C) = \frac{1}{5}$ \\
+    $i_H(x_3 = S) = i_H(x_1=T) = \frac{3}{5} \cdot \log \frac{3}{5} + \frac{2}{5} \cdot \log \frac{2}{5} \approx 0.673$ \\
+    $i_H(x_3 = C) = \frac{1}{5} \cdot \log \frac{1}{5} + \frac{4}{5} \cdot \log \frac{4}{5} \approx 0.500$ \\
+    $\Delta_{x_3} = 1 - \frac{4}{10} \cdot 0.673 - \frac{6}{10} \cdot 0.500 \approx 0.431$
+  \end{tabular}
+  \end{table}
+  \end{flushleft}
+  \begin{flushleft}
+  Split on $x_3$ (highest entropy)!
+  \end{flushleft}
+\end{flushleft}
 %
 \Topic{Programming Task}
 %
