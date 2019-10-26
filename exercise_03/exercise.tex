@@ -9,12 +9,6 @@
 \newcommand{\PersonTwo}{Julian Hohenadel (03673879)}
 \newcommand{\PersonThree}{Kevin Bein (03707775)}
 
-\newcommand{\pd}[1]{\frac{\partial}{\partial #1}}
-\newcommand{\pds}[1]{\frac{\partial^2}{\partial #1}}
-
-\DeclareMathOperator*{\argmax}{arg\,max}
-\DeclareMathOperator*{\argmin}{arg\,min}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % DOKUMENT
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -77,6 +71,29 @@ Considering problem 1 and the fact that log converts exponents to factors (which
 %
 \Problem{3}
 %
+\begin{align*}
+  Beta(6,4) &= \left(\frac{\Gamma(6+4)}{\Gamma(6)\Gamma(4)} \cdot \theta^{6-1} \cdot (1-\theta)^{4-1}\right) \\
+  &= \frac{9!}{5! \cdot 4!} \cdot \theta^5\cdot  (1-\theta)^3 \\
+  &= 126 \cdot \theta^5 \cdot (1-\theta)^3
+\end{align*}
+\begin{align*}
+  \theta_{\text{MAP}} &= \argmax_\theta p(\theta|f) \\
+  &= \argmax_\theta \frac{p(f|\theta) \cdot p(\theta)}{p(f)} \\
+  &= \argmax_\theta p(f|\theta) \cdot p(\theta) \\
+  &= \argmax_\theta \left(\theta^{\mathbb{I}[f=T]} \cdot (1-\theta)^{\mathbb{I}[f=H]}\right) \cdot \left(126 \cdot \theta^5 \cdot (1-\theta)^3\right) \\
+  &= \argmax_\theta \theta^{M+5} \cdot (1-\theta)^{N+3} \\
+  &= \argmax_\theta \log\left(\theta^{M+5} \cdot (1-\theta)^{N+3}\right) \\ 
+  &= \argmax_\theta (M+5) \log(\theta) + (N+3) \log(1-\theta)
+\end{align*}
+\begin{align*}
+  \Rightarrow \; & \pd{\theta} (M+5) \log(\theta) + (N+3) \log(1-\theta) = \frac{M+5}{\theta} - \frac{N-3}{1-\theta} \overset{!}{=} 0 \\
+  \Rightarrow \; & \theta_\text{MAP} = \frac{M+5}{M+N+8}
+\end{align*}
+\begin{align*}
+  \theta_\text{MAP} \overset{!}{=} 0.75 = \frac{3}{4} = \frac{30}{40} \\
+  \Rightarrow \; M=25, N=40-25-8= 7
+\end{align*}
+(In general, the solution is $M=3N+1$)
 %
 \Problem{4}
 %
