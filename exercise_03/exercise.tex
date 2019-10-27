@@ -95,7 +95,31 @@ Considering problem 1 and the fact that log converts exponents to factors (which
 \end{align*}
 (In general, the solution is $M=3N+1$)
 %
+%
+\newpage
 \Problem{4}
+%
+\begin{flushleft}
+Given are $X \sim Bern$, $P(\theta) \sim Beta$ and $P(D|\theta) \sim Binomial$.
+The expecterd mean of the prior (Beta distribution) is $\E[\theta] = \frac{a}{a+b}$. The maximum likelihood estimate is given by $\E[\theta_\text{MLE}] = \frac{m}{N} = \frac{m}{m+l}$. We now identify the posterior mean distribution:
+\end{flushleft}
+\begin{align*}
+P(\theta|D) &= \frac{P(D|\theta) P(\theta)}{P(D)} \\
+&= \left(\binom{N}{m} \theta^m (1-\theta)^{N-m}\right) \cdot \left(\frac{\Gamma(a+b)}{\Gamma(a)\Gamma(b)} \theta^{a-1} (1-\theta)^{b-1}\right) \\
+&= \binom{N}{m} \frac{\Gamma(a+b)}{\Gamma(a)\Gamma(b)} \cdot \theta^{m+a-1} \cdot (1-\theta)^{N-m+b-1} \\
+&\propto \theta^{m+a-1} \cdot (1-\theta)^{N-m+b-1} \\
+&\propto Beta(\theta | m+a, N-m+b) = Beta(\theta | m+a, l+b)
+\end{align*}
+Looking up the mean of the Beta distribution yields the mean of the posterior distribution:
+\[ \E[\theta|D] = \E[\theta|m,N,a,b] = \frac{m+a}{m+a+N-m+b} = \frac{a+m}{a+b+m+l} \]
+Refactoring the mean
+\begin{align*}
+  \frac{a+m}{a+b+m+l} &= \frac{a}{a+b+m+l} + \frac{m}{a+b+m+l} \\
+  &= \underbrace{\frac{a+b}{a+b+m+l}}_{\lambda} \cdot \frac{a}{a+b} + \underbrace{\frac{m+l}{a+b+m+l}}_{(1-\lambda)} \cdot \frac{a}{m+l} \\
+  &= \lambda \cdot \frac{a}{a+b} + (1-\lambda)\cdot\frac{m}{m+l} \\
+  &= \lambda \cdot \E[\theta] + (1-\lambda) \cdot \E[\theta_\text{MLE}]
+\end{align*}
+shows that the posterior mean lies between the prior mean and the maximum likelihood estimate for $\theta$.
 %
 %
 \Topic{Programming Task}
