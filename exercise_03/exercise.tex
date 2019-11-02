@@ -38,7 +38,7 @@
 & \\
 \pd{\theta} f_2(\theta) &= \pd{\theta}\left(\log(\theta^t) + \log((1-\theta)^h)\right) \\
 &= \pd{\theta}\left(\log(\theta^t) \right) + \pd{\theta}\left(\log((1-\theta)^h)\right) \\
-&= t \cdot \pd{\theta}\left(\theta\right) + h \cdot \pd{\theta}\left(\log(1-\theta)\right) \\
+&= t \cdot \pd{\theta}\log\left(\theta\right) + h \cdot \pd{\theta}\left(\log(1-\theta)\right) \\
 &= \frac{t}{\theta} - \frac{h}{1-\theta} \\
 & \\
 \pds{\theta} f_2(\theta) &= \pd{\theta}\left(\frac{t}{\theta}\right) - \pd{\theta}\left(\frac{h}{1-\theta}\right) \\
