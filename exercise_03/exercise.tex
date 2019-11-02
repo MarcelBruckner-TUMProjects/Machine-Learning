@@ -51,10 +51,11 @@
 %
 \Problem{2}
 %
-\begin{quote}
-"Monotonic functions preserver critical points"
-\end{quote}
-\begin{flushleft}
+\begin{equation*}
+	\pd{\theta} \log f(\theta) = \frac{1}{f(\theta)} * \pd{\theta} f(\theta)  \eqex 0 \eqex \pd{\theta} f(\theta)  
+\end{equation*}
+The derivative of the logarithm of a function $f$ is the same as the derivative of the function times the factor~$\frac{1}{f}$. So in all minima and maxima where the derivative of the function $f$ is 0, the derivative of the function times a factor is also 0, hence the logarithm keeps all minima and maxima.
+
 Since $\log$ is a monotonic transformation, the function will yield the same values when plugged into $\underset{\theta}{\arg\max}$:
 \[ \argmax_\theta f(\theta) = \argmax_\theta \log f(\theta) \]
 %\begin{align*}
@@ -63,7 +64,7 @@ Since $\log$ is a monotonic transformation, the function will yield the same val
 %\Rightarrow & \pd{\theta} \left( \log(f(x|\theta))\right) = \frac{\pd{\theta}{f(x)}}{f(x)}
 %\end{align*}
 Considering problem 1 and the fact that log converts exponents to factors (which also increases the numerical stabillity), computing the log-likelihood is faster and yields more compact functions which can then be maximized.
-\end{flushleft}
+
 %
 %
 \Topic{Properties of MLE and MAP}
