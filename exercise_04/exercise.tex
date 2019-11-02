@@ -3,12 +3,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\newcommand{\ExerciseNumber}{01}
+\newcommand{\ExerciseNumber}{04}
 
 \newcommand{\PersonOne}{Marcel Bruckner (03674122)}
 \newcommand{\PersonTwo}{Julian Hohenadel (03673879)}
 \newcommand{\PersonThree}{Kevin Bein (03707775)}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % DOKUMENT
@@ -24,17 +23,52 @@
 % !!! HOMEWORK STARTS HERE !!!
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-\Topic{Example Topic}
+\Topic{Least squares regression}
 %
 \Problem{1}
-Example question: Dimensions of matrices $A, B, C, D, E, F$
 %
-\begin{align}
-	A \in \Matrix{M}{N}, \qquad B &\in \Matrix{1}{M}, \qquad C \in \Matrix{N}{P}\\
-	D \in \Vector{Q}, \qquad B &\in \Matrix{N}{N}, \qquad C \in \Vector{1}
-\end{align}%
+\begin{flushleft}
+Using $T = diag(t_i)$, the derivative can be calculated similar to the lecture:
+\end{flushleft}
+\begin{align*}
+  \nabla_w E_\text{weighted}(w) &= \nabla_w \frac{1}{2} \sum_{i=1}^N t_i [w^T \phi(x_i) - y_i]^2 \\
+  &= \nabla_w \frac{1}{2} (\Phi w - y)^T T (\Phi w - y) \\
+  &= \nabla_w \frac{1}{2} (w^T \Phi^T - y^T)(T\Phi w - T y) \\
+  &= \nabla_w \frac{1}{2} (w^T \Phi^T T \Phi w - 2w^T \Phi^T T y + y^T T y) \\
+  &= \nabla_w (\frac{1}{2} w^T \Phi^T T \Phi w - w^T \Phi^T T y + \frac{1}{2}y^T T y) \\
+  &= \Phi^T T \Phi w - \Phi^T T y \\
+  &\overset{!}{=} 0
+  & \\
+  &\Rightarrow \Phi^T T y = \Phi^T T \Phi w \\
+  &\Rightarrow w = \Phi^T T y (\Phi^T T \Phi)^{-1} 
+\end{align*}
 %
-
+\textit{Missing explanation for 1) and 2)}
+%
+%
+\Topic{Ridge regression}
+%
+\Problem{2}
+%
+\Problem{3}
+%
+%
+\Topic{Multi-output linear regression}
+%
+\Problem{4}
+%
+%
+\Topic{Comparison of linear regression models}
+%
+\Problem{5}
+%
+%
+\Topic{Programming Task}
+%
+\Problem{6}
+%
+\includepdf[pages=-]{exercise_04_notebook.pdf}
+%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % !!! HOMEWORK ENDS HERE !!!
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
