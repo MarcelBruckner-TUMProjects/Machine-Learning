@@ -31,7 +31,7 @@
 Using $T = diag(t_i)$, the derivative can be calculated similar to the lecture:
 \end{flushleft}
 \begin{align*}
-  \nabla_w E_\text{weighted}(w) &= \nabla_w \frac{1}{2} \sum_{i=1}^N t_i [w^T \phi(x_i) - y_i]^2 \\
+  \nabla_w E_\text{weighted}(w) &= \nabla_w \frac{1}{2} \sum_{i=1}^N t_i \left[w^T \phi(x_i) - y_i\right]^2 \\
   &= \nabla_w \frac{1}{2} (\Phi w - y)^T T (\Phi w - y) \\
   &= \nabla_w \frac{1}{2} (w^T \Phi^T - y^T)(T\Phi w - T y) \\
   &= \nabla_w \frac{1}{2} (w^T \Phi^T T \Phi w - 2w^T \Phi^T T y + y^T T y) \\
@@ -50,8 +50,64 @@ Using $T = diag(t_i)$, the derivative can be calculated similar to the lecture:
 %
 \Problem{2}
 %
+\begin{align*}
+  E_\text{LS} &= \frac{1}{2} \sum_{i=1}^N \left[w^T \phi(x_i) - y_i\right]^2 \\
+  &= \frac{1}{2} (\Phi w - y)^T (\Phi w - y) \\
+  E_\text{ridge} &= \frac{1}{2} \sum_{i=1}^N \left[w^T \phi(x_i) - y_i\right]^2 + \frac{\lambda}{2} ||w||_2^2 \\
+  &= \frac{1}{2} (\Phi w - y)^T (\Phi w - y) + \frac{\lambda}{2} ||w||_2^2 
+\end{align*}
+\begin{flushleft}
+Following the instructions, we can augment the design matrix $\Phi$ and $y$:
+\end{flushleft}
+\begin{align*}
+\Phi &= 
+\begin{pmatrix}
+  \phi_1(x_1) & \ldots & \phi_M(x_1) \\
+  \vdots & \ddots & \vdots \\
+  \phi_1(x_N) & \ldots & \phi_M(x_N)
+\end{pmatrix} \in \mathbb{R}^{N \times M} \\
+\Rightarrow \Phi_A &=
+\begin{pmatrix}
+  \phi_1(x_1) & \ldots & \phi_M(x_1) \\
+  \vdots & \ddots & \vdots \\
+  \phi_1(x_N) & \ldots & \phi_M(x_N) \\
+  \sqrt{\lambda} I & & 0 \\
+  & \ddots & \\
+  0 & & \sqrt{\lambda} I
+\end{pmatrix} =
+\begin{pmatrix} \Phi \\ \sqrt{\lambda} I \end{pmatrix}
+\in \mathbb{R}^{N \times M+M} 
+\end{align*}
+\begin{align*}
+  y &= \begin{pmatrix} y_1 \\ \vdots \\ y_M \end{pmatrix}
+  \in \mathbb{R}^M 
+  \Rightarrow y_A = \begin{pmatrix} y_1 \\ \vdots \\ y_M \\ 0_1 \\ \vdots \\ 0_M \end{pmatrix}
+  = \begin{pmatrix} y \\ 0 \end{pmatrix}
+\in \mathbb{R}^{M+M}
+\end{align*}
+\begin{flushleft}
+Inserting $\Phi_A$ and $y_A$ into $E_\text{LS}(w)$ directly gives ridge regression:
+\begin{align*}
+  E_\text{LS}(w) &= \frac{1}{2} (\Phi_A w - y_A)^T (\Phi_A w - y_A) = \frac{1}{2} (\Phi w - y)^T (\Phi w - y) + \frac{\lambda}{2} ||w||_2^2 = E_\text{ridge}(w) \\
+\end{align*}
+\end{flushleft}
+%
+\newpage
 \Problem{3}
 %
+\begin{align*}
+\nabla_w E_\text{ridge}(w) &= \nabla_w \left[\frac{1}{2} (\Phi w - y)^T (\Phi w - y) + \frac{\lambda}{2} ||w||^2_2 \right] \\
+&= \nabla_w \frac{1}{2} (\Phi w - y)^T (\Phi w - y) + \nabla_w \frac{\lambda}{2} ||w||^2_2 \\
+&= (\Phi^T \Phi w - \Phi^T y) + \lambda w \\
+&\overset{!}{=} 0 \\
+&\Rightarrow \Phi^T\Phi w - \Phi^T y + \lambda w = 0 \\
+&\Rightarrow \Phi^T\Phi w  + \lambda w = \Phi^T y \\
+&\Rightarrow (\Phi^T \Phi + \lambda I) w = \Phi^T y \\
+&\Rightarrow w = (\Phi^T \Phi + \lambda I)^{-1} \Phi^T y
+\end{align*}
+\begin{flushleft}
+  When $N < M$ then the covariance Matrix $\Phi^T \Phi$ becomes singular ($det(\Phi^T\Phi) = 0)$ and thus cannot be inverted anymore. Adding the L2-Regularization term in ridge regression $\Phi^T \Phi + \lambda I$ fixes this problem and the inverse can be computed again. L2 also increases the numerical stability by reducing the variance of the matrix and thus roundoff errors cannot accumulate as fast.
+\end{flushleft}
 %
 \Topic{Multi-output linear regression}
 %
