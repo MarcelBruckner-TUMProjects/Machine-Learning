@@ -113,6 +113,26 @@ Inserting $\Phi_A$ and $y_A$ into $E_\text{LS}(w)$ directly gives ridge regressi
 %
 \Problem{4}
 %
+\begin{flushleft}
+The solution is very similar to the single target case which is given in the lecture:
+\end{flushleft}
+\[ w_\text{ML} = (\Phi^T \Phi)^{-1} \Phi^T \mathbf{y} = \Phi^\dagger \mathbf{y} \]
+For multiple outputs we can combine the weights $\mathbf{w}_i$ and the outputs $\mathbf{y}_i$ into matrices with $n$ rows containing the respective $m^\text{th}$ vector. 
+\[ \mathbf{Y} = \begin{pmatrix}y_1 \\ \ldots \\ y_m \end{pmatrix} \in \mathbb{R}^{n\times m} \]
+\[ \mathbf{W} = \begin{pmatrix}w_1 \\ \ldots \\ w_m \end{pmatrix} \in \mathbb{R}^{n\times m} \]
+The log-likelihood then looks similar to the single output case:
+\begin{align*}
+- \ln p(\mathbf{Y} | \mathbf{X}, \mathbf{W}, \beta) &= - \ln \left[ \prod_{i=1}^n \mathcal{N}(\mathbf{y}_i | \mathbf{W}^T \phi(\mathbf{x}_i), \beta^{-1} I) \right] \\
+&= \frac{\beta}{2} \sum_{i=1}^n (\mathbf{W}^T \phi(\mathbf{x}_i) - \mathbf{Y})^2 - \frac{n}{2} \ln \beta + \frac{n}{2} \ln 2 \pi \\
+&= \frac{\beta}{2} \sum_{i=1}^n \left(\sum_{j=1}^m (\mathbf{w}_j^T \phi(\mathbf{x}_i) - \mathbf{y}_{j})^2\right) - \frac{n}{2} \ln \beta + \frac{n}{2} \ln 2 \pi \\
+\end{align*}
+When calculating the minimzer, the constant parts fall out and we are left with the sum of the previous result of the different $\mathbf{y}_i$ which ultimately yields to the resullt for the multivariate case:
+\begin{align*}
+  \mathbf{W}_\text{ML} &= \Phi^\dagger \mathbf{y}_1 + \ldots + \Phi^\dagger \mathbf{y}_m \\
+  &= \sum_{i=1}^m \Phi^\dagger \mathbf{y}_i \\
+  &= \Phi^\dagger \sum_{i=1}^m \mathbf{y}_i \\
+  &= \Phi^\dagger \mathbf{Y}
+\end{align*}
 %
 \Topic{Comparison of linear regression models}
 %
