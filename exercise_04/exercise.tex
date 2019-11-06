@@ -138,6 +138,37 @@ When calculating the minimzer, the constant parts fall out and we are left with 
 %
 \Problem{5}
 %
+\begin{flushleft}
+a) 
+\[ {\mathbf{w}^*}^T x_i = \mathbf{w}^T_{new} a \mathbf{x}_i \Rightarrow \mathbf{w}_{new} = \frac{\mathbf{w}^*}{a} \]
+\end{flushleft}
+\begin{flushleft}
+b) Closed form solution of $w_{new}^*$:
+\end{flushleft}
+\begin{align*}
+  \mathbf{w}_{new}^* &= \argmin_\mathbf{w} \frac{1}{2} \sum_{i=1}^N (\mathbf{w}^T a \mathbf{x}_i - \mathbf{y}_i)^2 + \frac{\lambda_{new}}{2} \mathbf{w}^T \mathbf{w} \\
+  &= \nabla_w \left[ \frac{1}{2} \sum_{i=1}^N (\mathbf{w}^T a \mathbf{x}_i - \mathbf{y}_i)^2 + \frac{\lambda_{new}}{2} \mathbf{w}^T \mathbf{w} \right] \\
+  &= \nabla_w \left[ \frac{1}{2} \sum_{i=1}^N (\mathbf{w}^T a \mathbf{x}_i - \mathbf{y}_i)^2 \right] + \nabla_w \left[ \frac{\lambda_{new}}{2} \mathbf{w}^T \mathbf{w} \right]\\
+  &= \nabla_w \left[ \frac{1}{2} (a \mathbf{X} \mathbf{w} - \mathbf{y})^T (a \mathbf{X} \mathbf{w} - \mathbf{y}) \right] + \nabla_w \left[ \frac{\lambda_{new}}{2} \mathbf{w}^T \mathbf{w} \right]\\
+  &= \nabla_w \left[ \frac{1}{2} (a \mathbf{w}^T \mathbf{X}^T a \mathbf{X} \mathbf{w} - 2 \mathbf{w^T} a \mathbf{X}^T \mathbf{y} + \mathbf{y}^T \mathbf{y})\right] + \nabla_w \left[ \frac{\lambda_{new}}{2} \mathbf{w}^T \mathbf{w} \right]\\
+  &= a \mathbf{X}^T a \mathbf{X} \mathbf{w}  - a \mathbf{X}^T \mathbf{y} + \lambda_{new} \mathbf{y} \\
+  &\overset{!}{=} 0 \\
+  &\Rightarrow a \mathbf{X}^T a \mathbf{X} \mathbf{w} + \lambda_{new} \mathbf{y} = a \mathbf{X}^T \mathbf{y} \\
+  &\Rightarrow w_{new}^* = a (a^2 \mathbf{X}^T \mathbf{X} + \lambda_{new} I)^{-1} \mathbf{X}^T \mathbf{y}
+\end{align*}
+Condition from a):
+\begin{align*}
+\mathbf{w}^*_{new} &\overset{!}{=} \frac{\mathbf{w}^*}{a} \\
+\Leftrightarrow  a (a^2 \mathbf{X}^T \mathbf{X} + \lambda_{new} I)^{-1} \mathbf{X}^T \mathbf{y} &= \frac{1}{a}(\mathbf{X}^T \mathbf{X} + \lambda I)^{-1} \mathbf{X}^T \mathbf{y} \\
+\Leftrightarrow  a (a^2 \mathbf{X}^T \mathbf{X} + a^2 \frac{\lambda_{new}}{a^2} I)^{-1} \mathbf{X}^T \mathbf{y} &= \frac{1}{a}(\mathbf{X}^T \mathbf{X} + \lambda I)^{-1} \mathbf{X}^T \mathbf{y} \\
+\Leftrightarrow  \frac{1}{a^2} a (\mathbf{X}^T \mathbf{X} + \frac{\lambda_{new}}{a^2} I)^{-1} \mathbf{X}^T \mathbf{y} &= \frac{1}{a}(\mathbf{X}^T \mathbf{X} + \lambda I)^{-1} \mathbf{X}^T \mathbf{y} \\
+\Leftrightarrow  \frac{1}{a} (\mathbf{X}^T \mathbf{X} + \frac{\lambda_{new}}{a^2} I)^{-1} \mathbf{X}^T \mathbf{y} &= \frac{1}{a}(\mathbf{X}^T \mathbf{X} + \lambda I)^{-1} \mathbf{X}^T \mathbf{y} \\
+\Leftrightarrow  \frac{\lambda_{new}}{a^2} &= \lambda \\
+\Leftrightarrow  \lambda_{new} &= a^2 \lambda
+\end{align*}
+\begin{flushleft}
+
+\end{flushleft}
 %
 \Topic{Programming Task}
 %
