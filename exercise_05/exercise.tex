@@ -53,6 +53,19 @@ For $\lambda_0 > \lambda_1$, $x$ must be bigger than $\frac{\log(\lambda_0) - \l
 %
 %
 \Problem{3}
+\begin{flushleft}
+Softmax $\sigma_\text{soft}(x) = \frac{\exp(x_i)}{\sum_{i=1}^C \exp(x_k)}$
+and Sigmoid $\sigma_\text{sig} = \frac{1}{1+\exp(-a)}$. For $C = \{1,2\}$ we show that $\sigma_\text{soft} \overset{!}{=} \sigma_\text{sig}$.
+\end{flushleft}
+\begin{align*}
+  \sigma_\text{soft}(a) &= \frac{\exp(w_1^T x)}{\sum_{i=1}^C \exp(w_i^T x)} \\
+  &= \frac{\exp(w_1^T x)}{\exp(w_1^T x) \exp(w_2^T x)} \\
+  &= \frac{1}{1+ \exp(w_1^T x) / \exp(w_2^T x)} \\
+  &= \frac{1}{1+ \exp(w_1^T x - w_2^T x)} \\
+  &= \frac{1}{1+ \exp(-(w_2 - w_1)^T x)} \\
+  &= \sigma_\text{sig}(\bar{w}^T x) \\
+  &= \sigma_\text{sig}(a)
+\end{align*}
 %
 %
 \Problem{4}
