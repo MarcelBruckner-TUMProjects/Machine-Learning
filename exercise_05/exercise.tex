@@ -50,6 +50,17 @@ For $\lambda_0 > \lambda_1$, $x$ must be bigger than $\frac{\log(\lambda_0) - \l
 %
 %
 \Problem{2}
+\begin{align*}
+  \hat{w} &= \argmin_w E(w) \\
+  &= \argmin_w -\prod_{i=1}^N \sigma(w^T x_i)^{y_i} (1-\sigma(w^T x_i))^{1-y_i} \\
+  &= \argmax_w \prod_{i=1}^N \sigma(w^T x_i)^{y_i} (1-\sigma(w^T x_i))^{1-y_i} \\
+\end{align*}
+\begin{flushleft}
+For $w \longrightarrow \infty$, $\sigma(w^T x^i) \longrightarrow 0$. It follows that $\argmax_w E(w) = \prod_{i=1}^N 0^{y_i} \cdot (1-0)^{1-y_i} = 0$.
+\end{flushleft}
+\begin{flushleft}
+Ultimately, this will lead to a heaviside step function which will classify every training point with a posterior probability of $p(y|x) = 1$. This can be prevented bei either testing against an upper threshold or penalizing large weights (as already sugegsted in the lecture: $E(w) = - \ln p(y-|w,X) + \lambda ||w||^2_q$.
+\end{flushleft}
 %
 %
 \Problem{3}
