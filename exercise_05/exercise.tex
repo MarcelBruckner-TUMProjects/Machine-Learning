@@ -41,8 +41,8 @@ b) For a $x$ to be classified as $1$ the probability of $p(y=1|x)$ must be great
   &= \log \frac{\lambda_1 \exp(-\lambda_1 x)}{\lambda_0 \exp(-\lambda_0 x)} \\
   &= \log \frac{\lambda_1}{\lambda_0} + \lambda_0 x - \lambda_1x \\
   &= (\log(\lambda_1) - \log(\lambda_0)) + (\lambda_0 - \lambda_1)x \\
-  &\Rightarrow (\lambda_0 - \lambda_1)x > \log(\lambda_1) - \log(\lambda_0) \\
-  &\Rightarrow x > \frac{\log(\lambda_1) - \log(\lambda_0)}{\lambda_0 - \lambda_1}
+  &\Rightarrow (\lambda_0 - \lambda_1)x > \log(\lambda_0) - \log(\lambda_1) \\
+  &\Rightarrow x > \frac{\log(\lambda_0) - \log(\lambda_1)}{\lambda_0 - \lambda_1}
 \end{align*}
 \begin{flushleft}
 For $\lambda_0 > \lambda_1$, $x$ must be bigger than $\frac{\log(\lambda_0) - \log(\lambda_1)}{\lambda_0 - \lambda_1}$. In the other case where $\lambda_1 > \lambda_0$, $x$ must be bigger or equal to 0 but smaller than $\frac{\log(\lambda_0) - \log(\lambda_1)}{\lambda_0 - \lambda_1}$.
