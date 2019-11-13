@@ -70,10 +70,10 @@ and Sigmoid $\sigma_\text{sig} = \frac{1}{1+\exp(-a)}$. For $C = \{1,2\}$ we sho
 \end{flushleft}
 \begin{align*}
   \sigma_\text{soft}(a) &= \frac{\exp(w_1^T x)}{\sum_{i=1}^C \exp(w_i^T x)} \\
-  &= \frac{\exp(w_1^T x)}{\exp(w_1^T x) \exp(w_2^T x)} \\
-  &= \frac{1}{1+ \exp(w_1^T x) / \exp(w_2^T x)} \\
-  &= \frac{1}{1+ \exp(w_1^T x - w_2^T x)} \\
-  &= \frac{1}{1+ \exp(-(w_2 - w_1)^T x)} \\
+  &= \frac{\exp(w_1^T x)}{\exp(w_1^T x) + \exp(w_2^T x)} \\
+  &= \frac{1}{1+ \exp(w_2^T x) / \exp(w_1^T x)} \\
+  &= \frac{1}{1+ \exp(w_2^T x - w_1^T x)} \\
+  &= \frac{1}{1+ \exp(-(w_1 - w_2)^T x)} \\
   &= \sigma_\text{sig}(\bar{w}^T x) \\
   &= \sigma_\text{sig}(a)
 \end{align*}
