@@ -68,7 +68,40 @@ g_n(\lambda x+ (1- \lambda)y)\\
 %
 \Problem{2}
 %
-
+\begin{flushleft}
+a)\\
+Minimum $x*$ of $f$ is the partial derivative wrt. $x_1$ and $x_2$:\\
+\begin{align*}
+\frac{\partial f}{\partial x_1} &= x_1 + 2 \overset{!}{=} 0 \implies x_1 = -2\\
+\frac{\partial f}{\partial x_2} &= 2x_2 + 1 \overset{!}{=} 0 \implies x_2 = - \frac{1}{2}\\
+\end{align*}
+$x*$ is at $x_1 = -2$ and $x_2 = -\frac{1}{2}$.\\
+\end{flushleft}
+\begin{flushleft}
+b)\\
+2 steps gradient descent with $x^{(0)} = (0,0)$ and learning rate $\tau = 1$:\\
+Gradient descent in general:\\
+1) Take point $x^{(n)}$\\
+2) compute $f'(x)$\\
+3) $x^{(n+1)} = x^{(n)} - \tau * f'(x)$\\
+First step:\\
+\begin{align*}
+\frac{\partial f}{\partial x_1=0} &= x_1 + 2 = 2\implies x^{(1)}_1 = 0 - 1*2 = -2\\
+\frac{\partial f}{\partial x_2=0} &= 2x_2 + 1 = 1\implies x^{(1)}_2 = 0 -1*1 = -1\\
+\implies x^{(1)} &= (-2,-1)
+\end{align*}
+Second step:\\
+\begin{align*}
+\frac{\partial f}{\partial x_1=-2} &= x_1 + 2 = 0\implies x^{(2)}_1 = -2 - 1*0 = -2\\
+\frac{\partial f}{\partial x_2=-1} &= 2x_2 + 1 = -1\implies x^{(2)}_2 = -1 -1*-1 = 0\\
+\implies x^{(2)} &= (-2,0)
+\end{align*}
+\end{flushleft}
+\begin{flushleft}
+c)\\
+It will with $x_1 = -2$ but it won't with $x_2$ because it alternates between $-1$ and $0$.\\
+To solve this problem a learning rate $0 < \tau < 1$ would be needed to stop the alternation of $x_2$ and help to converge to $x_2 = -\frac{1}{2}$.\\
+\end{flushleft}
 %
 %
 \Problem{3}
