@@ -106,10 +106,37 @@ To solve this problem a learning rate $0 < \tau < 1$ would be needed to stop the
 \end{flushleft}
 %
 %
-\Problem{3}
-%
-%
+
 \Problem{4}
+%
+\begin{flushleft}
+a)\\
+Regin $S$ is not convex.
+\begin{align*}
+\forall x,y \in S: \lambda x + (1-\lambda)y \in S \hspace{10mm}\forall \lambda \in [0,1]
+\end{align*}
+Let $x$ be $(3.5,1)$ $\in S$ and let $y$ be $(6,3.5)$ $\in S$ and let $\lambda$ be $0.5$:
+\begin{align*}
+0.5*(3.5,1) + 0.5*(6,3.5) = (4.75, 2.25) \notin S
+\end{align*}
+$\implies S$ is not convex
+\end{flushleft}
+\begin{flushleft}
+b)\\
+There is no local (or global) maximizer of $f$, since any such local maximizer would
+necessarily occur at a critical point, and the only critical point is a local minimizer.\\
+That is because the second derivative of $f$ for $x_1$ is $\frac{\partial^2 f}{\partial x_1^2} = e^{x_1 + x_2}$ and for $x_2$ is $\frac{\partial^2 f}{\partial x_2^2} = e^{x_1 + x_2} - \frac{5}{x_2^2}$\\
+With the domain of $S$ there are no values for $x_1$ and $x_2$ so that $\frac{\partial^2 f}{\partial x_{1,2}^2}$ is negativ.
+\end{flushleft}
+\begin{flushleft}
+c)\\
+- Subdivide $S$ into convex subregions.\\
+- Use the algorithm to compute the minimum of every subdomain of $S$.\\
+- Pick the one with the best minimum. 
+\end{flushleft}
+%
+%
+\Problem{3}
 %
 %
 
