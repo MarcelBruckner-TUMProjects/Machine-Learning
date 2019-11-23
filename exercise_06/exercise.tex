@@ -28,9 +28,47 @@
 %
 \Problem{1}
 %
+\begin{flushleft}
+a)\\
+$h(x)=g_2(g_1(x))$ is not convex in this context:\\
+Since $g_2$ and $g_1$ are convex: $g_2''\geq0$ and $g_1''\geq0$ but $g_2$ can 
+be decreasing so $g_2'(x)$ does not have to be positive $\forall x$.
+\begin{align*}
+[h(x)]' &= g_2'(g_1(x))*g_1'(x)\\
+[h(x)]'' &= [g_2'(g_1(x))*g_1'(x)]'\\
+[h(x)]'' &= g_2''(g_1(x))*(g_1'(x))^2 + g_2'(g_1(x))*g_1''(x)
+\end{align*}
+So $[h(x)]''$ can be $\leq 0$ if $g_2'(g_1(x)) \leq 0$ ($(g_1'(x))^2$ is 
+always $\geq 0$)
+\end{flushleft}
+\begin{flushleft}
+b)\\
+$h(x)=g_2(g_1(x))$ is convex in this context:\\
+Since $g_2$ and $g_1$ are convex: $g_2''\geq0$ and $g_1''\geq0$ also $g_2$ is 
+non-decreasing so $g_2'(x) \geq 0$.
+\begin{align*}
+[h(x)]' &= g_2'(g_1(x))*g_1'(x)\\
+[h(x)]'' &= [g_2'(g_1(x))*g_1'(x)]'\\
+[h(x)]'' &= g_2''(g_1(x))*(g_1'(x))^2 + g_2'(g_1(x))*g_1''(x)
+\end{align*}
+So $[h(x)]''$ can only be $\geq 0$. ($(g_1'(x))^2$ is always $\geq 0$)
+\end{flushleft}
+\begin{flushleft}
+c)\\
+$h(x)=max(g_1(x),...,g_n(x))$ is always convex:\\
+\begin{align*}
+h(\lambda x+ (1- \lambda)y) &= max(g_1(\lambda x+ (1- \lambda)y), ... , 
+g_n(\lambda x+ (1- \lambda)y)\\
+&\leq max(\lambda g_1(x) + (1-\lambda)g_1(y),...,\lambda g_n(x) + (1-\lambda)g_n(y))\\
+&\leq max(\lambda g_1(x), ... , \lambda g_n(x)) + max(\lambda g_1(y), ... , \lambda g_n(y))\\
+&= \lambda h(x) + (1-\lambda)h(y)
+\end{align*}
+\end{flushleft}
 %
 %
 \Problem{2}
+%
+
 %
 %
 \Problem{3}
