@@ -1,0 +1,91 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{../Ressources/Preamble.tex} % !!! DON'T TOUCH !!!
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newcommand{\ExerciseNumber}{01}
+
+\newcommand{\PersonOne}{Marcel Bruckner (03674122)}
+\newcommand{\PersonTwo}{Julian Hohenadel (03673879)}
+\newcommand{\PersonThree}{Kevin Bein (03707775)}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DOKUMENT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{../Ressources/Cover.tex} % !!! DON'T TOUCH !!!
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% !!! HOMEWORK STARTS HERE !!!
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\Topic{Optimization}
+%
+\Problem{1}
+%
+\begin{flushleft}
+Since $f_0$ is a hyperplane, the min and max values are at the vertices:
+\end{flushleft}
+\begin{align*}
+  f_0((9,3)^T) = -2 \;\;\;\;\;& f_0((5,7)^T) = -11 \\ f_0((7,2)^T) = 8 \;\;\;\;\;& f_0((9,3)^T) = 10
+\end{align*}
+\begin{flushleft}
+  We immediately see that $\theta_\text{min} = (5,7)^T$ and $\theta_\text{max} = (9,3)^T$ and also $\mathrm{min}(f_0) = -11$ and $\mathrm{max}(f_0) = 10$.
+\end{flushleft}
+%
+%
+\Problem{2}
+%
+\begin{equation*}
+  \pi_\chi(p) = 
+  \begin{cases}
+    {\color{magenta}p} & {\color{magenta}\text{if } p\in \chi} \\
+    {\color{forestgreen}(1.5,2.5)^T} & {\color{forestgreen}\text{if $p$ is in the green corridor}} \\
+    {\color{red}(3,1)^T} & {\color{red}\text{if $p$ is in the red corridor}} \\
+    {\color{blue}\begin{pmatrix}
+      \frac{1}{2} p_1 - \frac{1}{2} p_2 + 2 \\
+      \frac{1}{2} - p_1 + \frac{1}{2} p_2 + 2 \\
+    \end{pmatrix}} & {\color{blue}\text{if $p$ is in the blue corridor}} \\
+    {\color{orange}\begin{pmatrix}
+      \mathrm{max}(0, \mathrm{min}(3, p_1)) \\
+      \mathrm{max}(0, \mathrm{min}(2.5, p_2))
+    \end{pmatrix}} & {\color{orange}\text{if $p$ is outside green/red/blue corridor and } p \not\in \chi}
+    \end{cases} 
+\end{equation*}
+\begin{flushleft}
+The blue corridor projects down to a line. We can take any two points on the line to calculate the projection vector $\pi_{\chi_{a,b}}$. We choose $\mathbf{a}:=(0,4)^T$ and $\mathbf{b}:=(4,0)^T$ for simplicity.
+\end{flushleft}
+\begin{align*}
+  \pi_{\chi_{a,b}} &= a + \frac{(\mathbf{p} - \mathbf{a})^T (\mathbf{b} - \mathbf{a})}{\Vert \mathbf{b} - \mathbf{a} \Vert^2_2} (\mathbf{b} - \mathbf{a})  \\
+  &= \left(\begin{smallmatrix}0 \\ 4 \end{smallmatrix}\right) + \frac{\left(\begin{smallmatrix}p_1 - 0 \\ p_2 - 4 \end{smallmatrix}\right)^T \left(\begin{smallmatrix}4 \\ -4 \end{smallmatrix}\right)}{32} \left(\begin{smallmatrix}4 \\ -4 \end{smallmatrix}\right) \\
+  &= \left(\begin{smallmatrix}0 \\ 4 \end{smallmatrix}\right) + \frac{4p_1 - 4p_2 + 16}{32} \left(\begin{smallmatrix}4 \\ -4 \end{smallmatrix}\right) \\
+  &= \left(\begin{smallmatrix}0 \\ 4 \end{smallmatrix}\right) + \left(\frac{1}{8} p_1 - \frac{1}{8} p_2 + \frac{1}{2} \right) \left(\begin{smallmatrix}4 \\ -4 \end{smallmatrix}\right) \\
+  &=\begin{pmatrix}
+      \frac{1}{2} p_1 - \frac{1}{2} p_2 + 2 \\
+      \frac{1}{2} - p_1 + \frac{1}{2} p_2 + 2 \\
+    \end{pmatrix}
+\end{align*}
+%
+
+\Problem{3}
+%
+%
+
+\Problem{4}
+%
+%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% !!! HOMEWORK ENDS HERE !!!
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{../Ressources/Appendix.tex} % !!! DON'T TOUCH !!!
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
