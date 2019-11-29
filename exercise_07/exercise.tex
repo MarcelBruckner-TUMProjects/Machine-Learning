@@ -50,7 +50,47 @@ Maximizer $\theta_{max} = (9,3) f(\theta_{max})= 9$\\
 %
 \Problem{2}
 %
-
+\begin{flushleft}
+a)\\
+Constraints:\\
+\begin{align*}
+\theta_1 + \theta_2 \leq 4\qquad \qquad(1)\\
+0 \leq \theta_1 \leq 3\qquad \qquad(2)\\
+0 \leq \theta_2 \leq 2.5\qquad \qquad(3)
+\end{align*}
+Plot: Axis along $x$-dimension: $\theta_1$, Axis along $y$-dimension: $\theta_2$, simply plot the functions (1) up to (3):
+\begin{align*}
+\includegraphics[scale=0.3]{graphs/graph_2.png}
+\end{align*}
+Domain corner vertices: $(0,0)$, $(3,0)$, $(3,1)$, $(1.5,2.5)$, $(0,2.5)$\\
+Domain regions: Domain (inside), box, line, $(3,1)$, $(1.5,2.5)$\\
+\begin{align*}
+\pi_\mathcal{X}(p) &= p \text{ if } p \in \text{ Domain (inside)}\\
+\pi_\mathcal{X}(p) &= (3,1) \text{ if } p \in \text{ Region (3,1) }\\
+\pi_\mathcal{X}(p) &= (1.5,2.5) \text{ if } p \in \text{ Region (1.5,2.5)}\\
+\pi_\mathcal{X}(p) &= \pi_{line} \text{ if } p \in \text{ Region line}\\
+\pi_\mathcal{X}(p) &= \pi_{box} \text{ if } p \in \text{ Region box}\\
+\end{align*}
+\begin{align*}
+p \in \text{ Domain (inside)} &= \{p | p \in \mathcal{X}\}\\
+p \in \text{ Region (3,1) } &= \{p | p_2 \geq 1 \land -p_1 + p_2 \leq -2\}\\
+p \in \text{ Region (1.5,2.5)} &= \{p | p_1  \geq 1.5 \land -p_1+p_2 \geq 1\}\\
+p \in \text{ Region line} &= \{p | p_1 +p_2 > 4 \land -2 < -p_1+p_2 < 1\}\\
+p \in \text{ Region box} &= \{p | p \notin \mathcal{X} \land (p_1 < 1.5 \lor p_2 < 1)\}\\
+\end{align*}
+Let $a$ be $(4,0)$ and let $b$ be $(0,4)$:\\ 
+\begin{align*}
+\pi_{line}(p) &= a + \frac{(p-a)^{T}(b-a)}{||b-a||^{2}_{2}}(b-a)\\
+&= \begin{pmatrix}4\\0\end{pmatrix} + \frac{(p_1-4, p_2)\begin{pmatrix}-4\\4\end{pmatrix}}{32} \begin{pmatrix}-4\\4\end{pmatrix}\\
+&= \begin{pmatrix}4\\0\end{pmatrix} + \frac{16-4p_1+4p_2}{32} \begin{pmatrix}-4\\4\end{pmatrix}\\
+&= \begin{pmatrix}4\\0\end{pmatrix} + \begin{pmatrix}2-\frac{1}{2}p_1+\frac{1}{2}p_2\end{pmatrix} \begin{pmatrix}-1\\1\end{pmatrix}\\
+&=\begin{pmatrix}2+\frac{1}{2}p_1-\frac{1}{2}p_2\\2-\frac{1}{2}p_1+\frac{1}{2}p_2\end{pmatrix}
+\end{align*}
+Formula taken from the lecture:
+\begin{align*}
+\pi_{box}(p) &= \begin{pmatrix}max(0, min(3, p_1))\\max(0, min(2.5, p_2))\end{pmatrix}
+\end{align*}
+\end{flushleft}
 %
 %
 \Problem{3}
