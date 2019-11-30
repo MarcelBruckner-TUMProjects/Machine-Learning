@@ -3,7 +3,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\newcommand{\ExerciseNumber}{01}
+\newcommand{\ExerciseNumber}{07}
 
 \newcommand{\PersonOne}{Marcel Bruckner (03674122)}
 \newcommand{\PersonTwo}{Julian Hohenadel (03673879)}
@@ -24,7 +24,7 @@
 % !!! HOMEWORK STARTS HERE !!!
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-\Topic{Optimization}
+\Topic{Constrained Optimization}
 %
 \Problem{1}
 %
@@ -71,15 +71,65 @@ The blue corridor projects down to a line. We can take any two points on the lin
     \end{pmatrix}
 \end{align*}
 %
-
+%
+\newpage
 \Problem{3}
 %
+\begin{flushleft}
+1. Formulate the Lagrangian:
+\begin{align*}
+  L(\theta, \alpha) &= f_0(\theta) + \sum^M_{i=1} \alpha_i f_i(\theta) \\
+  &= \theta_1 - \sqrt{3} \theta_2 + \alpha(\theta_1^2  + \theta_2^2 - 4) \\
+  &= \theta_1 - \sqrt{3} \theta_2 + \alpha\theta_1^2 + \alpha\theta_2^2 - \alpha 4
+\end{align*}
+2.1 Solve:
+\begin{align*}
+  g(\alpha) &= \underset{\theta}{\min}\left[ L(\theta, \alpha)\right] \\
+  &= \underset{\theta}{\min}\left[\theta_1 - \sqrt{3} \theta_2 + \alpha \theta_1^2 + \alpha \theta_2^2 - \alpha 4 \right] \\
+  &\Rightarrow \left[ \theta_1 - \sqrt{3} \theta_2 + \alpha \theta_1^2 + \alpha \theta_2^2 - \alpha 5 \right]' \overset{!}{=} 0 \\
+  &\Rightarrow \nabla_\theta L(\mathbf{\theta}, \alpha) =
+  \begin{pmatrix}
+    1 + 2 \alpha \theta_1 \\
+    - \sqrt{3} + 2 \alpha \theta_2
+  \end{pmatrix} = \overset{!}{=} 0 \\
+  &\Rightarrow \begin{cases}
+    1 + 2 \alpha \theta_1 = 0 \\
+    -\sqrt{3} + 2 \alpha \theta_2 = 0
+  \end{cases} \\
+  &\Rightarrow \begin{cases}
+    \theta_1 = -\frac{1}{2\alpha} \\
+    \theta_2 = \frac{\sqrt{3}}{2 \alpha}
+  \end{cases}
+\end{align*}
+2.2 Get the dual function $g(\alpha)$:
+\begin{align*}
+  g(\alpha) &= L(\theta, \alpha) \\
+  &= \theta_1 - \sqrt{3} \theta_2 + \alpha \theta_1^2 + \alpha \theta^2 - \alpha 4 \\
+  &= -\frac{1}{2 \alpha} - \sqrt{3} \frac{\sqrt{3}}{2 \alpha} + \alpha \left( -\frac{1}{2 \alpha} \right)^2 + \alpha \left( \frac{\sqrt{3}}{2 \alpha} \right)^2 - \alpha 4 \\
+  &= -\frac{1}{2 \alpha} - \frac{3}{2 \alpha} + \left(\frac{1}{4 \alpha} \right) + \left(\frac{3}{4 \alpha} \right) - \alpha 4 \\
+  &= - \frac{1}{\alpha} - \alpha 4 
+\end{align*}
+3. Solve the dual problem:
+\[ 
+\left[g(\alpha)\right]' = \frac{1}{\alpha^2} - 4 \Rightarrow \alpha = \frac{1}{2} \text{ (since $\alpha \geq 0$)}
+\]
+\[ 
+g\left(\frac{1}{2}\right) = -4
+\]
+Slater's condition holds.
+\end{flushleft}
+\begin{flushleft}
+The minimizer $\theta$ becomes:
+\end{flushleft}
+\[ \theta_1 = -\frac{1}{2\alpha} = -\frac{1}{2\cdot\frac{1}{2}} = -1 \]
+\[ \theta_2 = \frac{\sqrt{3}}{2 \alpha} = \frac{\sqrt{3}}{2 \cdot \frac{1}{2}} = \sqrt{3} \]
 %
-
+%
 \Problem{4}
 %
-%
 
+%
+%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % !!! HOMEWORK ENDS HERE !!!
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
