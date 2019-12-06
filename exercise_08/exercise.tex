@@ -67,7 +67,32 @@ $\implies$ $g(\alpha)$ vectorized definition $\equiv$ $g(\alpha)$ standard defin
 \end{flushleft}
 \begin{flushleft}
 b)\\
-
+If the search for a local maximizer of $g$ returns the global maximum of $g$, that
+means that the maximization problem is concave.\\
+To proove this claim $Q$ needs to be negativ (semi)definite (NSD).\\
+For $Q$ to be NSD: $\forall \alpha \in \R^{N}: \alpha^{T}Q\alpha \leq 0$ 
+needs to hold.\\
+\begin{align}
+\alpha^{T}Q\alpha &\leq 0\\
+-\sum_{i=1}^{N}\sum_{j=1}^{N}y_{i}y_{j}\alpha_{i}\alpha_{j}x^{T}_{i}x_{j} &\leq 0\\
+-\sum_{i=1}^{N}\sum_{j=1}^{N}(y_{i}\alpha_{i}x_{i})^{T}(y_{j}\alpha_{j}x_{j}) &\leq 0\\
+-(y\odot\alpha)^{T}XX^{T}(y\odot\alpha) &\leq 0\\
+-(y\odot\alpha)^{T}(X^{T})^{T}X^{T}(y\odot\alpha) &\leq 0\\
+-(X^{T}(y\odot\alpha))^{T}(X^{T}(y\odot\alpha)) &\leq 0\\
+-(X^{T}(y\odot\alpha))^{2} &\leq 0\\
+-(\geq 0) &\leq 0 \qquad \square
+\end{align}
+(3): $y_{i}$ and $\alpha_{i}$ can be dragged inside here because they are scalars.\\
+(4): The whole expression returns a scalar, that's why reshaping is done this way:\\
+$dim((y\odot\alpha)^{T})= 1 \times N$\\
+$dim(X)= N \times 1$\\
+$dim(X^{T})= 1 \times N$\\
+$dim((y\odot\alpha))= N \times 1$\\
+(5): $X=(X^{T})^{T}$\\
+(6): $(AB)^{T}=B^{T}A^{T}$\\
+(7): $(...)^{2} \geq 0 $, (as long as $...$ is not complex)\\
+(8): Proofs that $Q$ is NSD.\\
+$Q$ is NSD, that means the maximization problem is in fact concave so local maxima = global maxima.
 \end{flushleft}
 %
 %
