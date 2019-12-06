@@ -38,6 +38,37 @@ SVM tries to maximize the margin from the hyperplane to the data points, percept
 %
 \Problem{2}
 %
+\begin{flushleft}
+a)\\
+$g(\alpha)$ vectorized definition:
+\begin{align*}
+g(\alpha) = \frac{1}{2}\alpha^{T}Q\alpha + \alpha^{T}1_{N}
+\end{align*}
+$g(\alpha)$ standard definition:
+\begin{align*}
+g(\alpha) = \sum_{i=1}^{N}\alpha_{i}-\frac{1}{2}\sum_{i=1}^{N}\sum_{j=1}^{N}
+y_{i}y_{j}\alpha_{i}\alpha_{j}x^{T}_{i}x_{j}
+\end{align*}
+$y$ is a vector of dimension $N\times 1$\\
+$x$ is a matrix of dimension $N\times M$\\
+$\sum_{i=1}^{N}\sum_{j=1}^{N}y_{i}y_{j}$ is equivalent to $yy^{T}$ 
+(dimension is $N\times N$)\\
+$\sum_{i=1}^{N}\sum_{j=1}^{N}x^{T}_{i}x_{j}$ is equivalent to $xx^{T}$ 
+(dimension is $N\times N$)\\
+$\sum_{i=1}^{N}\sum_{j=1}^{N}y_{i}y_{j}x^{T}_{i}x_{j}$ is the Hadamard product so:
+$yy^{T} \odot xx^{T}$\\
+Take the $-1$ scalar from the standard definition into the matrix: 
+$-yy^{T} \odot xx^{T} = Q$\\
+$\implies \frac{1}{2}\alpha^{T}Q\alpha \equiv \frac{1}{2}\alpha^{T}[-yy^{T} 
+\odot xx^{T}]\alpha \equiv -\frac{1}{2}\sum_{i=1}^{N}\sum_{j=1}^{N}y_{i}y_{j}\alpha_{i}
+\alpha_{j}x^{T}_{i}x_{j}$\\
+$\alpha^{T}1_{N} \equiv \sum_{i=1}^{N}\alpha_{i}$ is trivial.\\
+$\implies$ $g(\alpha)$ vectorized definition $\equiv$ $g(\alpha)$ standard definition
+\end{flushleft}
+\begin{flushleft}
+b)\\
+
+\end{flushleft}
 %
 %
 \Problem{3}
