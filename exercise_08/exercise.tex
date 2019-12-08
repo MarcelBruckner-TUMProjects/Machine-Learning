@@ -98,6 +98,33 @@ $Q$ is NSD, that means the maximization problem is in fact concave so local maxi
 %
 \Problem{3}
 %
+\begin{flushleft}
+$\epsilon$ is the LOOCV misclassification rate.\\
+$s$ is the number of support vectors.\\
+$N$ is the number of samples.
+\begin{align*}
+\epsilon \leq \frac{s}{N}
+\end{align*}
+Case 1: \\
+$x_i$ from the current LOOCV is a support vector: \\
+$x_i$ is misclassified: $\implies$ $\alpha_i$ of $x_i$ is $0$ $\implies$
+the misclassification of $x_i$ will affect $w^*$ and $b^*$.
+\begin{align*}
+\implies \epsilon_{\text{Case 1}} \leq \frac{s}{N}
+\end{align*}
+Case 2: \\
+$x_i$ from the current LOOCV isn't a support vector: \\
+Then $x_i$ will have no effect on $w^*$ and $b^*$ anyway.\\
+$\implies$ nothing will change.
+\begin{align*}
+\implies \epsilon_{\text{Case 2}} = 0
+\end{align*}
+Both cases combined evaluate to the original inequality.
+\begin{align*}
+\epsilon_{\text{Case 1 and 2}} &\leq \frac{s}{N} + 0\\
+\epsilon &\leq \frac{s}{N}
+\end{align*}
+\end{flushleft}
 %
 %
 \Problem{4}
