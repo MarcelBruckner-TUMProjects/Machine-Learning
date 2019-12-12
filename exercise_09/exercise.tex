@@ -30,7 +30,7 @@
 %
 \begin{flushleft}
 \begin{align*}
-y &= \log \sum_{i=1}^{N}e^{x_i} = a + \log \sum_{i=1}^{N}e^{x_i-a}\\
+y &= \log \sum_{i=1}^{N}e^{x_i} \stackrel{!}{=} a + \log \sum_{i=1}^{N}e^{x_i-a}\\
 e^y &= \sum_{i=1}^{N}e^{x_i}\\
 e^y e^{-a} &= e^{-a} \sum_{i=1}^{N}e^{x_i}\\
 e^{y-a} &= \sum_{i=1}^{N}e^{x_i} e^{-a} \\
@@ -43,6 +43,16 @@ y &= a + \log \sum_{i=1}^{N}e^{x_i - a}\\
 %
 \Problem{2}
 %
+\begin{flushleft}
+\begin{align*}
+\frac{e^{x_i}}{\sum^{N}_{i=1} e^{x_i}} &\stackrel{!}{=} 
+\frac{e^{x_{i}-a}}{\sum^{N}_{i=1} e^{x_i - a}}\\
+\frac{e^{x_{i}-a}}{\sum^{N}_{i=1} e^{x_i - a}} = 
+\frac{e^{-a}e^{x_{i}}}{\sum^{N}_{i=1} e^{x_i} e^{-a}} &=
+\frac{e^{-a}e^{x_{i}}}{e^{-a} \sum^{N}_{i=1} e^{x_i}} =
+\frac{e^{x_i}}{\sum^{N}_{i=1} e^{x_i}}\\
+\end{align*}
+\end{flushleft}
 %
 %
 \Problem{3}
