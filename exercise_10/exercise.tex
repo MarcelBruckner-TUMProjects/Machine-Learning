@@ -28,10 +28,26 @@
 %
 \Problem{1}
 %
+\begin{flushleft}
+a) Since all weights are positive, $\max(0, W_j^{*^T} x_i) = W_j^{*^T}x_i$ and the following holds:
+\begin{align*}
+	\mathcal{L}_{NN}(W^*_{NN}) &= \frac{1}{2} \sum_{i=1}^N ( - y_i)^2 \\
+	&= \frac{1}{2} \sum_{i=1}^N (  W_{L+1}^{*^T} (W_L^{*^T} \max(0, \ldots(0, W_2^{*^T}\max(0, W_1^{*^T} x_i)))) - y_i)^2 \\
+	&= \frac{1}{2} \sum_{i=1}^N (  W_{L+1}^{*^T} (W_L^{*^T}(\ldots ( W_2^{*^T}( W_1^{*^T} x_i)))) - y_i)^2 \\
+	&= \frac{1}{2} \sum_{i=1}^N (  W_{L+1}^{*^T} \cdot \ldots \cdot  W_1^{*^T} x_i - y_i)^2 \\
+	&= \frac{1}{2} \sum_{i=1}^N (  W_{NN}^{*^T} x_i - y_i)^2 
+\end{align*}
+Since the solutions $W^*_{NN}$ and $w^*_{LS}$ are a global optimum, we can set $W_{NN}^* = w_{LS}^*$ and we get $\mathcal{L}_{NN}(W^*_{NN}) = \mathcal{L}_{LS}(w^*_{LS})$.
+\end{flushleft}
+
+\begin{flushleft}
+b) Since simple linear regression is a special case of a Feed-Forward Neural Network, the Loss is the same. This does not work the other way around because NNs can learn more complex functions. $w^*_{LS}$ being non-negative does not imply anything about the optimal weights of the network $W^*_{NN}$.Therefore we can conclude that  $\mathcal{L}_{NN}(W^*_{NN}) \leq \mathcal{L}_{LS}(w^*_{LS})$.
+\end{flushleft}
 %
 %
 \Problem{2}
 %
+% include pdf
 %
 %
 
