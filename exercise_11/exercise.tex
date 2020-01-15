@@ -32,7 +32,7 @@
 Leslie: Votes 3 for Alien, 4 for Titanic.\\
 Originial space: $[0, 3, 0, 0, 4]$\\
 To obtain the wanted concept space a projection from original space to concept space is needed.\\
-(Script page 67)
+(script page 67)
 \begin{align*}
 P &= A * V \\
 P &= [0, 4, 0, 0, 4] *
@@ -46,7 +46,25 @@ P &= [0, 4, 0, 0, 4] *
 \\
 P &= [1.74, 2.84]
 \end{align*}
-This means Leslie will most likely favor the Titanic and Casablanca movies (score: 2.84) over the sci-fi genre (score: 1.74). She already rated Titanic which means she has already seen it, so Casablanca would be a good recommendation.\\
+This means Leslie will most likely favor the Titanic and Casablanca movies (score: 2.84) over the sci-fi genre (score: 1.74). She already rated Titanic, which means she has already seen it, so Casablanca would be a good recommendation.\\
+\end{flushleft}
+%
+%
+
+\Problem{2}
+%
+\begin{flushleft}
+Integrating out z (script page 31):\\
+$x_i \sim \mathcal{N}(\mu, \, W W^{T} + \sigma^{2}I)$\\
+$x$ has a gaussian distribution with mean $\mu$ and covariance 
+$W W^{T} + \sigma^{2}I = W W^{T} + \Phi$.\\
+$y = Ax$ is a linear transformation $\implies$ $y$ has still a gaussian distribution.\\
+$y$ now has a mean of $A\mu$ and a covariance of $AW W^{T}A^{T} + A \Phi A^{T}$.\\
+(Because the covariance after a linear transformation with A is $cov(AZ)=Acov(Z)A^{T}$.)\\
+If $\mu_{ML}$, $W_{ML}$, $\Phi_{ML}$ represent the max. likelihood solution before the transformation, $A\mu_{ML}$, $AW_{ML}$, $A\Phi_{ML}A^{T}$ will represent the max. likelihood solution after a transformation with $A$.\\
+$A$ is orthogonal $\implies AA^{T}=I$, which means $A \Phi A^{T} = A \sigma^{2}I A^{T} = \sigma^{2}I A A^{T} = \sigma^{2}I I = \sigma^{2}I^{2} = \sigma^{2}I$\\
+Which means the form of the model is preserved.
+
 \end{flushleft}
 %
 %
