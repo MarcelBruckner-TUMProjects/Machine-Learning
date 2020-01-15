@@ -27,12 +27,28 @@
 \Topic{Dimensionality Reduction and Matrix Factorization}
 %
 \Problem{1}
-Example question: Dimensions of matrices $A, B, C, D, E, F$
 %
-\begin{align}
-	A \in \Matrix{M}{N}, \qquad B &\in \Matrix{1}{M}, \qquad C \in \Matrix{N}{P}\\
-	D \in \Vector{Q}, \qquad B &\in \Matrix{N}{N}, \qquad C \in \Vector{1}
-\end{align}%
+\begin{flushleft}
+Leslie: Votes 3 for Alien, 4 for Titanic.\\
+Originial space: $[0, 3, 0, 0, 4]$\\
+To obtain the wanted concept space a projection from original space to concept space is needed.\\
+(Script page 67)
+\begin{align*}
+P &= A * V \\
+P &= [0, 4, 0, 0, 4] *
+\begin{bmatrix}
+0.58 & 0 \\
+0.58 & 0 \\
+0.58 & 0 \\
+0 & 0.71 \\
+0 & 0.71 \\
+\end{bmatrix}
+\\
+P &= [1.74, 2.84]
+\end{align*}
+This means Leslie will most likely favor the Titanic and Casablanca movies (score: 2.84) over the sci-fi genre (score: 1.74). She already rated Titanic which means she has already seen it, so Casablanca would be a good recommendation.\\
+\end{flushleft}
+%
 %
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
