@@ -68,6 +68,151 @@ Which means the form of the model is preserved.
 \end{flushleft}
 %
 %
+\Problem{3}
+%
+%
+%
+\Problem{4}
+%
+\begin{flushleft}
+a)
+\begin{align*}
+X &=
+\begin{bmatrix}
+4 & 3 & 2 \\
+2 & 1 & -2 \\
+4 & -1 & 2 \\
+-2 & 1 & 2 \\
+\end{bmatrix}
+\\
+\implies \text{mean vector} &= \frac{1}{N}
+[4 + 2 + 4 - 2, 3 + 1 - 1 + 1, 2 - 2 + 2 + 2] = [2, 1, 1]\\
+\implies \widetilde{X} = X - \text{mean} &=
+\begin{bmatrix}
+2 & 2 & 1 \\
+0 & 0 & -3 \\
+2 & -2 & 1 \\
+-4 & 0 & 1 \\
+\end{bmatrix}
+\\
+Var(X_{1}) &= \frac{1}{4} \sum_{i=1}^{4}(x_{i1} - 
+\bar{x_{1}})^2 = \frac{1}{4}(4 + 0 + 4 + 16) = 6
+\\
+Var(X_{2}) &= \frac{1}{4} \sum_{i=1}^{4}(x_{i2} - 
+\bar{x_{2}})^2 = \frac{1}{4}(4 + 0 + 4 + 0) = 2
+\\
+Var(X_{3}) &= \frac{1}{4} \sum_{i=1}^{4}(x_{i3} - 
+\bar{x_{3}})^2 = \frac{1}{4}(1 + 9 + 1 + 1) = 3
+\\
+Cov(X_{1}X_{2}) &= \frac{1}{4} \sum_{i=1}^{4}(x_{i1} - \bar{x_{1}}) 
+(x_{i2} - \bar{x_{2}}) = \frac{1}{4} ( 4 + 0 - 4 + 0) = 0
+\\
+Cov(X_{2}X_{3}) &= \frac{1}{4} \sum_{i=1}^{4}(x_{i2} - \bar{x_{2}}) 
+(x_{i3} - \bar{x_{3}}) = \frac{1}{4} ( 2 + 0 - 2 + 0) = 0
+\\
+Cov(X_{3}X_{1}) &= \frac{1}{4} \sum_{i=1}^{4}(x_{i3} - \bar{x_{3}}) 
+(x_{i1} - \bar{x_{1}}) = \frac{1}{4} ( 2 + 0 + 2 - 4) = 0
+\\
+\Sigma_{X} &= 
+\begin{bmatrix}
+6 & 0 & 0 \\
+0 & 2 & 0 \\
+0 & 0 & 3 \\
+\end{bmatrix}
+\\
+\text{Eigendecomposition: }
+\Sigma_{X} &= \Gamma \Lambda \Gamma^{T}
+\\
+&= 
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1 \\
+\end{bmatrix}
+\begin{bmatrix}
+6 & 0 & 0 \\
+0 & 2 & 0 \\
+0 & 0 & 3 \\
+\end{bmatrix}
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1 \\
+\end{bmatrix}
+\\
+Y &= \widetilde{X} * \Gamma = \widetilde{X}
+\\
+\end{align*}
+b)
+\\
+Truncate $\Gamma$: $2$ is the lowest eigenvalue so it will get "dropped". 
+\\
+
+$6 + 2 + 3 = 11 \implies \frac{11-2}{11} = \frac{9}{11}$ of the  variance is preserved.
+\\
+This means the corresponding eigenvector
+$
+\begin{bmatrix}
+0 \\
+1 \\
+0 \\
+\end{bmatrix}
+$ will be dropped from $\Gamma$.
+\\
+\begin{align*}
+Y &= \widetilde{X} * \Gamma
+\\
+Y &=
+\begin{bmatrix}
+2 & 2 & 1 \\
+0 & 0 & -3 \\
+2 & -2 & 1 \\
+-4 & 0 & 1 \\
+\end{bmatrix}
+\begin{bmatrix}
+1 & 0 \\
+0 & 0 \\
+0 & 1 \\
+\end{bmatrix}
+\\
+Y &= 
+\begin{bmatrix}
+2 & 1 \\
+0 & -3 \\
+2 & 1 \\
+-4 & 1 \\
+\end{bmatrix}
+\end{align*}
+c)
+\\
+$x_{5}$ needs to be the mean $[2, 1, 1]$.\\
+Then $\widetilde{X} = 
+\begin{bmatrix}
+2 & 2 & 1 \\
+0 & 0 & -3 \\
+2 & -2 & 1 \\
+-4 & 0 & 1 \\
+0 & 0 & 0 \\
+\end{bmatrix}
+$
+\\
+The variance changes only by a scaling factor because 
+now you normalize with $\frac{1}{5}$ instead of $\frac{1}{4}$.\\
+The covariance still yields $0$ for each dimension pairing.\\
+This means that again the $y$ axis will get "dropped" by the truncation.
+\begin{align*}
+Y &= 
+\begin{bmatrix}
+2 & 1 \\
+0 & -3 \\
+2 & 1 \\
+-4 & 1 \\
+0 & 0 \\
+\end{bmatrix}
+\end{align*}
+\end{flushleft}
+%
+%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % !!! HOMEWORK ENDS HERE !!!
