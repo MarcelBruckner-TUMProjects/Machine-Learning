@@ -1,0 +1,261 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{../Ressources/Preamble.tex} % !!! DON'T TOUCH !!!
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newcommand{\ExerciseNumber}{11}
+
+\newcommand{\PersonOne}{Marcel Bruckner (03674122)}
+\newcommand{\PersonTwo}{Julian Hohenadel (03673879)}
+\newcommand{\PersonThree}{Kevin Bein (03707775)}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DOKUMENT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{../Ressources/Cover.tex} % !!! DON'T TOUCH !!!
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% !!! HOMEWORK STARTS HERE !!!
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\Topic{Dimensionality Reduction and Matrix Factorization}
+%
+\Problem{1}
+%
+\begin{flushleft}
+Leslie: Votes 3 for Alien, 4 for Titanic.\\
+Originial space: $[0, 3, 0, 0, 4]$\\
+To obtain the wanted concept space a projection from original space to concept space is needed.\\
+(script page 67)
+\begin{align*}
+P &= A * V \\
+P &= [0, 4, 0, 0, 4] *
+\begin{bmatrix}
+0.58 & 0 \\
+0.58 & 0 \\
+0.58 & 0 \\
+0 & 0.71 \\
+0 & 0.71 \\
+\end{bmatrix}
+\\
+P &= [1.74, 2.84]
+\end{align*}
+This means Leslie will most likely favor the Titanic and Casablanca movies (score: 2.84) over the sci-fi genre (score: 1.74). She already rated Titanic, which means she has already seen it, so Casablanca would be a good recommendation.\\
+\end{flushleft}
+%
+%
+
+\Problem{2}
+%
+\begin{flushleft}
+Integrating out z (script page 31):\\
+$x_i \sim \mathcal{N}(\mu, \, W W^{T} + \sigma^{2}I)$\\
+$x$ has a gaussian distribution with mean $\mu$ and covariance 
+$W W^{T} + \sigma^{2}I = W W^{T} + \Phi$.\\
+$y = Ax$ is a linear transformation $\implies$ $y$ has still a gaussian distribution.\\
+$y$ now has a mean of $A\mu$ and a covariance of $AW W^{T}A^{T} + A \Phi A^{T}$.\\
+(Because the covariance after a linear transformation with A is $cov(AZ)=Acov(Z)A^{T}$.)\\
+If $\mu_{ML}$, $W_{ML}$, $\Phi_{ML}$ represent the max. likelihood solution before the transformation, $A\mu_{ML}$, $AW_{ML}$, $A\Phi_{ML}A^{T}$ will represent the max. likelihood solution after a transformation with $A$.\\
+$A$ is orthogonal $\implies AA^{T}=I$, which means $A \Phi A^{T} = A \sigma^{2}I A^{T} = \sigma^{2}I A A^{T} = \sigma^{2}I I = \sigma^{2}I^{2} = \sigma^{2}I$\\
+Which means the form of the model is preserved.
+
+\end{flushleft}
+%
+%
+\Problem{3}
+%
+\begin{flushleft}
+a)
+\\
+Transformation is only scaling done with the identity.
+\\ $\implies$ $70$ \% is kept. 
+\\
+b)
+\\
+R is an orthogonal matrix with only applies rotation, but doesn't change the form of
+the model.
+\\ $\implies$ $70$ \% is kept.
+\\
+c)
+\\
+This combines a) and b). Everything is scaled by 5 and some dimensions are mirrored at the oirigin.
+\\ $\implies$ $70$ \% is kept.
+\\
+d)
+\\
+Scaling is not uniform and therefore we cannot tell without additional information.
+\\ $\implies$ $70$ \% is kept.
+\\
+e)
+\\
+Adding the mean $\mu$ to every entry only shifts the points but PCA centers them again, so this has no effect.
+\\ $\implies$ $70$ \% is kept.
+\\
+f)
+\\
+$rank(A) = 5 \leq rank(Y_6) \leq K = 5$ and therefore all information is captured by the principal components.
+\\ $\implies$ $100$ \% is kept.
+
+\end{flushleft}
+%
+%
+\Problem{4}
+%
+\begin{flushleft}
+a)
+\begin{align*}
+X &=
+\begin{bmatrix}
+4 & 3 & 2 \\
+2 & 1 & -2 \\
+4 & -1 & 2 \\
+-2 & 1 & 2 \\
+\end{bmatrix}
+\\
+\implies \text{mean vector} &= \frac{1}{N}
+[4 + 2 + 4 - 2, 3 + 1 - 1 + 1, 2 - 2 + 2 + 2] = [2, 1, 1]\\
+\implies \widetilde{X} = X - \text{mean} &=
+\begin{bmatrix}
+2 & 2 & 1 \\
+0 & 0 & -3 \\
+2 & -2 & 1 \\
+-4 & 0 & 1 \\
+\end{bmatrix}
+\\
+Var(X_{1}) &= \frac{1}{4} \sum_{i=1}^{4}(x_{i1} - 
+\bar{x_{1}})^2 = \frac{1}{4}(4 + 0 + 4 + 16) = 6
+\\
+Var(X_{2}) &= \frac{1}{4} \sum_{i=1}^{4}(x_{i2} - 
+\bar{x_{2}})^2 = \frac{1}{4}(4 + 0 + 4 + 0) = 2
+\\
+Var(X_{3}) &= \frac{1}{4} \sum_{i=1}^{4}(x_{i3} - 
+\bar{x_{3}})^2 = \frac{1}{4}(1 + 9 + 1 + 1) = 3
+\\
+Cov(X_{1}X_{2}) &= \frac{1}{4} \sum_{i=1}^{4}(x_{i1} - \bar{x_{1}}) 
+(x_{i2} - \bar{x_{2}}) = \frac{1}{4} ( 4 + 0 - 4 + 0) = 0
+\\
+Cov(X_{2}X_{3}) &= \frac{1}{4} \sum_{i=1}^{4}(x_{i2} - \bar{x_{2}}) 
+(x_{i3} - \bar{x_{3}}) = \frac{1}{4} ( 2 + 0 - 2 + 0) = 0
+\\
+Cov(X_{3}X_{1}) &= \frac{1}{4} \sum_{i=1}^{4}(x_{i3} - \bar{x_{3}}) 
+(x_{i1} - \bar{x_{1}}) = \frac{1}{4} ( 2 + 0 + 2 - 4) = 0
+\\
+\Sigma_{X} &= 
+\begin{bmatrix}
+6 & 0 & 0 \\
+0 & 2 & 0 \\
+0 & 0 & 3 \\
+\end{bmatrix}
+\\
+\text{Eigendecomposition: }
+\Sigma_{X} &= \Gamma \Lambda \Gamma^{T}
+\\
+&= 
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1 \\
+\end{bmatrix}
+\begin{bmatrix}
+6 & 0 & 0 \\
+0 & 2 & 0 \\
+0 & 0 & 3 \\
+\end{bmatrix}
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1 \\
+\end{bmatrix}
+\\
+Y &= \widetilde{X} * \Gamma = \widetilde{X}
+\\
+\end{align*}
+b)
+\\
+Truncate $\Gamma$: $2$ is the lowest eigenvalue so it will get "dropped". 
+\\
+
+$6 + 2 + 3 = 11 \implies \frac{11-2}{11} = \frac{9}{11}$ of the  variance is preserved.
+\\
+This means the corresponding eigenvector
+$
+\begin{bmatrix}
+0 \\
+1 \\
+0 \\
+\end{bmatrix}
+$ will be dropped from $\Gamma$.
+\\
+\begin{align*}
+Y &= \widetilde{X} * \Gamma
+\\
+Y &=
+\begin{bmatrix}
+2 & 2 & 1 \\
+0 & 0 & -3 \\
+2 & -2 & 1 \\
+-4 & 0 & 1 \\
+\end{bmatrix}
+\begin{bmatrix}
+1 & 0 \\
+0 & 0 \\
+0 & 1 \\
+\end{bmatrix}
+\\
+Y &= 
+\begin{bmatrix}
+2 & 1 \\
+0 & -3 \\
+2 & 1 \\
+-4 & 1 \\
+\end{bmatrix}
+\end{align*}
+c)
+\\
+$x_{5}$ needs to be the mean $[2, 1, 1]$.\\
+Then $\widetilde{X} = 
+\begin{bmatrix}
+2 & 2 & 1 \\
+0 & 0 & -3 \\
+2 & -2 & 1 \\
+-4 & 0 & 1 \\
+0 & 0 & 0 \\
+\end{bmatrix}
+$
+\\
+The variance changes only by a scaling factor because 
+now you normalize with $\frac{1}{5}$ instead of $\frac{1}{4}$.\\
+The covariance still yields $0$ for each dimension pairing.\\
+This means that again the $y$ axis will get "dropped" by the truncation.
+\begin{align*}
+Y &= 
+\begin{bmatrix}
+2 & 1 \\
+0 & -3 \\
+2 & 1 \\
+-4 & 1 \\
+0 & 0 \\
+\end{bmatrix}
+\end{align*}
+\end{flushleft}
+%
+%
+\Problem{5}
+%
+\includepdf[pages=-]{exercise_11_notebook.pdf}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% !!! HOMEWORK ENDS HERE !!!
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{../Ressources/Appendix.tex} % !!! DON'T TOUCH !!!
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
