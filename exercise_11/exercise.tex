@@ -84,18 +84,23 @@ the model.
 \\
 c)
 \\
+This combines a) and b). Everything is scaled by 5 and some dimensions are mirrored at the oirigin.
+\\ $\implies$ $70$ \% is kept.
+\\
 d)
+\\
+Scaling is not uniform and therefore we cannot tell without additional information.
+\\ $\implies$ $70$ \% is kept.
 \\
 e)
 \\
-adding the mean $\mu$ to every entry of the matrix doesn't change the variance nor the 
-covariance. \\$\implies$ $70$ \% is kept.
+Adding the mean $\mu$ to every entry only shifts the points but PCA centers them again, so this has no effect.
+\\ $\implies$ $70$ \% is kept.
 \\
 f)
 \\
-cannot tell without additional information, the rank is $5$ but it is not stated if
-the linear dependent rows/ columns are zero vectors or have an arbitrary shape.
-\\ $\implies$ $\leq 70$ \% is kept.
+$rank(A) = 5 \leq rank(Y_6) \leq K = 5$ and therefore all information is captured by the principal components.
+\\ $\implies$ $100$ \% is kept.
 
 \end{flushleft}
 %
@@ -241,6 +246,9 @@ Y &=
 \end{flushleft}
 %
 %
+\Problem{5}
+%
+\includepdf[pages=-]{exercise_11_notebook.pdf}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % !!! HOMEWORK ENDS HERE !!!
