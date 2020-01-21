@@ -32,6 +32,19 @@
 %
 \Problem{2}
 %
+\begin{flushleft}
+(Linear) Autoencoder:
+\\
+Input data $X$: $D$-dimensional\\
+Hidden layer: $K$-dimensional\\
+No biases, activations = identity.\\
+This results in a linear transformation: $f(x) = f_{dec}(f_{enc}(x))= X W_1 W_2$\\
+With dimensions: $X: N \times D, W_1: D \times K, W_2: K \times D$\\
+With $K < D, X W_1$ forces $X$ into a $K$ dimensional subspace.\\
+Since this transformation is not the identity ($K < D$) perfect reconstruction is
+not achievable unless the input data $X$ is already in a $K$-dimensional subspace despite being $D$-dimensional data.
+
+\end{flushleft}
 %
 %
 \Problem{3}
