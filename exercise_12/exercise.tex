@@ -40,15 +40,51 @@ Hidden layer: $K$-dimensional\\
 No biases, activations = identity.\\
 This results in a linear transformation: $f(x) = f_{dec}(f_{enc}(x))= X W_1 W_2$\\
 With dimensions: $X: N \times D, W_1: D \times K, W_2: K \times D$\\
-With $K < D, X W_1$ forces $X$ into a $K$ dimensional subspace.\\
+With $K < D, X W_1$ forces $X$ into a $K$ dimensional5 subspace.\\
 Since this transformation is not the identity ($K < D$) perfect reconstruction is
-not achievable unless the input data $X$ is already in a $K$-dimensional subspace despite being $D$-dimensional data.
-
+not achievable unless the input data $X$ is already in a $K$-dimensional 
+subspace despite being $D$-dimensional data.
+\\
 \end{flushleft}
 %
 %
 \Problem{3}
 %
+\begin{flushleft}
+$K$ Gaussians:\\
+Intuition: Expected value of Gaussian is the mean.\\
+$\implies$ Expected value of $K$ Gaussians should be the $K$ means 
+added up (each cluster $z$).
+\begin{align*}
+p(x) &= \sum_{k} \pi_k \mathcal{N}(x | \mu_k , \Sigma_k)\\
+\mathbb{E}[x] &= \mathbb{E}_{p(z)} [ \mathbb{E}_{p(x|z)}[x|z]]\\
+\end{align*}
+$\mathbb{E}_{p(x|z)}[x|z]$ is the expected value of $x$ in cluster 
+$z$ which is the mean of cluster $z$.\\
+This implies $\mathbb{E}_{p(x|z)}[x|z] = \mu_{k}$.\\
+$\mathbb{E}_{p(z)}$ is the prior probability $\pi_z$ of $z$, also have to consider all clusters.\\
+This implies $\mathbb{E}_{p(z)} = \sum_{k=1}^{K} \pi_{k}$.\\
+Simply filling into the equation yields: 
+$\mathbb{E}[x] = \sum_{k=1}^{K} \pi_{k} \mu_k$\\
+Now $Cov[x]$:\\
+$\mathbb{E}[x]$ and $\mathbb{E}[x]^T$ respectivly are already known.
+\begin{align*}
+Cov[x] = \mathbb{E}[xx^T] - \mathbb{E}[x] \mathbb{E}[x]^T
+\end{align*}
+So only $\mathbb{E}[xx^T]$ is still missing:\\
+Filling into $\mathbb{E}[x] = \mathbb{E}_{p(z)} [ \mathbb{E}_{p(x|z)}[x|z]]$:
+\begin{align*}
+\mathbb{E}[xx^T] = \mathbb{E}_{p(z)} [ \mathbb{E}_{p(x|z)}[xx^T|z]]\\
+\mathbb{E}[xx^T] = \sum_{k=1}^{K} \pi_{k} \mathbb{E}_{p(x|z)}[xx^T|z]
+\end{align*}
+With $\Sigma = \mathbb{E}[(X - \mu) (X - \mu)^T] = \mathbb{E}[XX^T] - \mu \mu^T$\\
+$\implies \mathbb{E}[XX^T] = \Sigma + \mu \mu^T$
+\begin{align*}
+\mathbb{E}[xx^T] &= \sum_{k=1}^{K} \pi_{k} (\Sigma_k + \mu_k \mu_k^T)\\
+\implies Cov[x] &= \sum_{k=1}^{K} \pi_{k} (\Sigma_k + \mu_k \mu_k^T) - 
+\sum_{k=1}^K \sum_{l=1}^K \pi_k \pi_l \mu_k \mu_l^T
+\end{align*}
+\end{flushleft}
 %
 %
 \Problem{4}
