@@ -89,7 +89,28 @@ $\implies \mathbb{E}[XX^T] = \Sigma + \mu \mu^T$
 %
 \Problem{4}
 %
+\begin{flushleft}
+a) According to slide 12-19, we first need to draw the cluster indicators $k, l$ from categorical distribution given the probabilities $\pi_k^x, \pi_l^y$
+\begin{align*}
+ k \sim Cat(\pi_k^x) \\
+ l \sim Cat(\pi_l^y) 
+\end{align*}
+and then sample from their respective normal distributions:
+\begin{align*}
+ x \sim \mathcal{N}(\mu_k^x, \Sigma_k^x) \\
+ y \sim \mathcal{N}(\mu_k^x, \Sigma_k^x)
+\end{align*}
+$z$ is then given by $z := x + y$
+\end{flushleft}
 %
+\begin{flushleft}
+b) Since $x$ and $y$ are i.i.d and $x \sim \mathcal{N}(\mu_k^x, \Sigma_k^x)$ and $y \sim \mathcal{N}(\mu_k^y, \Sigma_k^y)$, the sum of two Gaussian distributions is again Gaussian. Therefore $p(z \,|\, \theta^x, \theta^y)$ is a mixture of Gaussians.
+\end{flushleft}
+%
+\begin{flushleft}
+c) 
+\[ p(z \,|\, \theta^x, \theta^y) = \sum_{k=1}^{K_x} \sum_{l=1}^{K_y} \pi_k^x \pi_l^y \; \mathcal{N}(z \,|\, \mu_k^x + \mu_l^y, \Sigma_k^x + \Sigma_l^y) \]
+\end{flushleft}
 %
 \Problem{5}
 %
